@@ -1,0 +1,21 @@
+RewriteEngine On
+RewriteBase /jobalerthub/
+
+# Home
+RewriteRule ^$ index.php [L]
+
+# Job
+RewriteRule ^job/?$ job/index.php [L,QSA]
+RewriteRule ^job/([^/]+)/?$ job/details.php?slug=$1 [L,QSA]
+
+# Result
+RewriteRule ^result/?$ result/index.php [L,QSA]
+RewriteRule ^result/([^/]+)/?$ result/details.php?slug=$1 [L,QSA]
+
+# Admit Card
+RewriteRule ^admit-card/?$ admit-card/index.php [L,QSA]
+RewriteRule ^admit-card/([^/]+)/?$ admit-card/details.php?slug=$1 [L,QSA]
+# category 
+RewriteRule ^category/([^/]+)/?$ category/index.php?slug=$1 [L,QSA]
+RewriteRule ^pdf/?$ pdf/index.php [L,QSA]
+RewriteRule ^pdf/([^/]+)/?$ pdf/details.php?slug=$1 [L,QSA]
