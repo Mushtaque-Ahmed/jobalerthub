@@ -14,13 +14,12 @@ async function loadHome() {
 
         if (!result.success) {
 
-            console.log(result.message);
+
 
             return;
 
         }
 
-        console.log(result.data);
 
     } catch (error) {
 

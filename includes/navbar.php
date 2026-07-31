@@ -50,7 +50,7 @@ NAVBAR
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?= BASE_URL ?>job" class="nav-link">
+                    <a href="<?= BASE_URL ?>job/" class="nav-link">
                         Latest Jobs
                     </a>
                 </li>

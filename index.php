@@ -238,7 +238,7 @@ LATEST JOBS
 
             </div>
 
-            <a href="<?= BASE_URL ?>job"  class="btn btn-outline-primary">
+            <a href="<?= BASE_URL ?>job/" class="btn btn-outline-primary">
 
                 View All
 
@@ -280,7 +280,7 @@ LATEST JOBS
 
                         <h5 class="fw-bold">
 
-                            <a href="<?= BASE_URL ?>job/<?= htmlspecialchars($job['slug']) ?>"
+                            <a href="<?= BASE_URL . $detailUrl ?><?= htmlspecialchars($job['slug']) ?>"
                                 class="text-dark text-decoration-none">
 
                                 <?= htmlspecialchars($job['title']) ?>

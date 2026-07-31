@@ -32,7 +32,7 @@ try {
 
     $params = [];
 
-    $where[] = "p.status='published'";
+    $where[] = "p.status= 1 ";
 
     if ($search != "") {
 
@@ -182,4 +182,5 @@ try {
 
     ]);
 
-}?>
+}
+?>

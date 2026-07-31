@@ -1,21 +1,66 @@
 RewriteEngine On
 RewriteBase /jobalerthub/
+RewriteRule ^test/?$ test.php [L]
+#########################################
+# Disable Directory Listing
+#########################################
+Options -Indexes
 
+#########################################
+# Block Direct .php Access
+# (except index.php)
+#########################################
+
+# Block direct .php access except API
+RewriteCond %{THE_REQUEST} \s/+(.+)\.php[\s?] [NC]
+RewriteCond %1 !^index$
+RewriteCond %{REQUEST_URI} !^/jobalerthub/api/ [NC]
+RewriteRule ^ 404.php [L]
+
+#########################################
 # Home
+#########################################
+
 RewriteRule ^$ index.php [L]
 
+#########################################
 # Job
+#########################################
+
 RewriteRule ^job/?$ job/index.php [L,QSA]
 RewriteRule ^job/([^/]+)/?$ job/details.php?slug=$1 [L,QSA]
 
+#########################################
 # Result
+#########################################
+
 RewriteRule ^result/?$ result/index.php [L,QSA]
 RewriteRule ^result/([^/]+)/?$ result/details.php?slug=$1 [L,QSA]
 
+#########################################
 # Admit Card
+#########################################
+
 RewriteRule ^admit-card/?$ admit-card/index.php [L,QSA]
 RewriteRule ^admit-card/([^/]+)/?$ admit-card/details.php?slug=$1 [L,QSA]
-# category 
+
+#########################################
+# Category
+#########################################
+
 RewriteRule ^category/([^/]+)/?$ category/index.php?slug=$1 [L,QSA]
+
+#########################################
+# PDF
+#########################################
+
 RewriteRule ^pdf/?$ pdf/index.php [L,QSA]
 RewriteRule ^pdf/([^/]+)/?$ pdf/details.php?slug=$1 [L,QSA]
+
+#########################################
+# Invalid URL -> 404
+#########################################
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . 404.php [L]
