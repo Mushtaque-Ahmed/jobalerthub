@@ -20,7 +20,7 @@ try {
 
     $category = (int)($_GET['category'] ?? 0);
 
-    $limit = 12;
+    $limit = 1;
 
     $offset = ($page - 1) * $limit;
 

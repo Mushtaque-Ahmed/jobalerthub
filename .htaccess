@@ -1,66 +1,119 @@
 RewriteEngine On
+
 RewriteBase /jobalerthub/
-RewriteRule ^test/?$ test.php [L]
+
 #########################################
 # Disable Directory Listing
 #########################################
 Options -Indexes
 
-#########################################
-# Block Direct .php Access
-# (except index.php)
-#########################################
 
-# Block direct .php access except API
-RewriteCond %{THE_REQUEST} \s/+(.+)\.php[\s?] [NC]
-RewriteCond %1 !^index$
-RewriteCond %{REQUEST_URI} !^/jobalerthub/api/ [NC]
-RewriteRule ^ 404.php [L]
+#########################################
+# Allow Admin Panel
+#########################################
+RewriteRule ^admin_hub(/.*)?$ - [L]
+
+
+#########################################
+# Allow API
+#########################################
+RewriteRule ^api(/.*)?$ - [L]
+
+
+#########################################
+# Allow Download
+#########################################
+RewriteRule ^download\.php$ - [L]
+
+
+#########################################
+# Serve Real Files Only
+#########################################
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
 
 #########################################
 # Home
 #########################################
-
 RewriteRule ^$ index.php [L]
 
-#########################################
-# Job
-#########################################
 
+#########################################
+# Search
+#########################################
+RewriteRule ^search/?$ search/index.php [L,QSA]
+
+
+#########################################
+# Jobs
+#########################################
 RewriteRule ^job/?$ job/index.php [L,QSA]
 RewriteRule ^job/([^/]+)/?$ job/details.php?slug=$1 [L,QSA]
 
-#########################################
-# Result
-#########################################
 
+#########################################
+# Results
+#########################################
 RewriteRule ^result/?$ result/index.php [L,QSA]
 RewriteRule ^result/([^/]+)/?$ result/details.php?slug=$1 [L,QSA]
+
 
 #########################################
 # Admit Card
 #########################################
-
 RewriteRule ^admit-card/?$ admit-card/index.php [L,QSA]
 RewriteRule ^admit-card/([^/]+)/?$ admit-card/details.php?slug=$1 [L,QSA]
+
+
+#########################################
+# Answer Key
+#########################################
+RewriteRule ^answer-key/?$ answer-key/index.php [L,QSA]
+RewriteRule ^answer-key/([^/]+)/?$ answer-key/details.php?slug=$1 [L,QSA]
+
+
+#########################################
+# Current Affairs
+#########################################
+RewriteRule ^current-affair/?$ current-affair/index.php [L,QSA]
+RewriteRule ^current-affair/([^/]+)/?$ current-affair/details.php?slug=$1 [L,QSA]
+
 
 #########################################
 # Category
 #########################################
-
 RewriteRule ^category/([^/]+)/?$ category/index.php?slug=$1 [L,QSA]
 
-#########################################
-# PDF
-#########################################
 
+#########################################
+# PDF Store
+#########################################
 RewriteRule ^pdf/?$ pdf/index.php [L,QSA]
 RewriteRule ^pdf/([^/]+)/?$ pdf/details.php?slug=$1 [L,QSA]
 
+
 #########################################
-# Invalid URL -> 404
+# Redirect Details URLs
 #########################################
 
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . 404.php [L]
+RewriteCond %{THE_REQUEST} \s/+jobalerthub/job/details\.php\?slug=([^&\s]+) [NC]
+RewriteRule ^job/details\.php$ /jobalerthub/job/%1? [R=301,L]
+
+
+RewriteCond %{THE_REQUEST} \s/+jobalerthub/result/details\.php\?slug=([^&\s]+) [NC]
+RewriteRule ^result/details\.php$ /jobalerthub/result/%1? [R=301,L]
+
+
+RewriteCond %{THE_REQUEST} \s/+jobalerthub/admit-card/details\.php\?slug=([^&\s]+) [NC]
+RewriteRule ^admit-card/details\.php$ /jobalerthub/admit-card/%1? [R=301,L]
+
+
+RewriteCond %{THE_REQUEST} \s/+jobalerthub/pdf/details\.php\?slug=([^&\s]+) [NC]
+RewriteRule ^pdf/details\.php$ /jobalerthub/pdf/%1? [R=301,L]
+
+
+#########################################
+# Custom 404
+#########################################
+ErrorDocument 404 /jobalerthub/404.php

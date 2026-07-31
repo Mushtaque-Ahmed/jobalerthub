@@ -1,10 +1,10 @@
 <?php
 
-$page_title="Latest Government Jobs";
+$page_title = "Latest Government Jobs";
 
-$meta_description="Latest Government Jobs";
+$meta_description = "Latest Government Jobs";
 
-$meta_keywords="jobs,result,admit card";
+$meta_keywords = "jobs,result,admit card";
 
 require_once "includes/config.php";
 require_once "includes/database.php";
@@ -63,25 +63,29 @@ HERO SECTION
                 </p>
 
                 <div class="row mt-4">
+                    <form action="<?= BASE_URL ?>search" method="GET" class="row mt-4">
 
-                    <div class="col-md-9">
+                        <div class="col-md-9">
 
-                        <div class="input-group">
+                            <div class="input-group">
 
-                            <input type="text" class="form-control form-control-lg"
-                                placeholder="Search Jobs, Results...">
+                                <input type="text" name="q" class="form-control form-control-lg"
+                                    placeholder="Search Jobs, Results, Admit Cards, PDFs..."
+                                    value="<?= htmlspecialchars($_GET['q'] ?? '') ?>" required>
 
-                            <button class="btn btn-warning">
+                                <button class="btn btn-warning">
 
-                                <i class="bi bi-search"></i>
+                                    <i class="bi bi-search"></i>
 
-                                Search
+                                    Search
 
-                            </button>
+                                </button>
+
+                            </div>
 
                         </div>
 
-                    </div>
+                    </form>
 
                 </div>
 
@@ -114,7 +118,7 @@ HERO SECTION
 
             <div class="col-lg-5 text-center">
 
-                <img src="<?= BASE_URL ?>assets/image/Government-Jobs.webp" class="img-fluid" alt="Government Jobs">
+                <img src="<?= BASE_URL ?>assets/image/text.png" class="img-fluid" alt="Government Jobs">
 
             </div>
 
@@ -158,56 +162,56 @@ QUICK CATEGORIES
 
             <?php if (!empty($categories)): ?>
 
-            <?php foreach ($categories as $category): ?>
+                <?php foreach ($categories as $category): ?>
 
-            <div class="col-6 col-md-3">
+                    <div class="col-6 col-md-3">
 
-                <a href="<?= BASE_URL ?>category/<?= htmlspecialchars($category['slug']) ?>"
-                    class="text-decoration-none">
+                        <a href="<?= BASE_URL ?>category/<?= htmlspecialchars($category['slug']) ?>"
+                            class="text-decoration-none">
 
-                    <div class="card border-0 shadow-sm h-100 text-center">
+                            <div class="card border-0 shadow-sm h-100 text-center">
 
-                        <div class="card-body">
+                                <div class="card-body">
 
-                            <div class="display-5 text-primary mb-3">
+                                    <div class="display-5 text-primary mb-3">
 
-                                <i class=" <?= htmlspecialchars($category['icon']) ?>"></i>
+                                        <i class=" <?= htmlspecialchars($category['icon']) ?>"></i>
+
+                                    </div>
+
+                                    <h5 class="fw-bold text-dark">
+
+                                        <?= htmlspecialchars($category['name']) ?>
+
+                                    </h5>
+
+                                    <small class="text-muted">
+
+                                        <?= (int) $category['total_posts'] ?> Posts
+
+                                    </small>
+
+                                </div>
 
                             </div>
 
-                            <h5 class="fw-bold text-dark">
-
-                                <?= htmlspecialchars($category['name']) ?>
-
-                            </h5>
-
-                            <small class="text-muted">
-
-                                <?= (int)$category['total_posts'] ?> Posts
-
-                            </small>
-
-                        </div>
+                        </a>
 
                     </div>
 
-                </a>
-
-            </div>
-
-            <?php endforeach; ?>
+                <?php endforeach; ?>
 
             <?php else: ?>
 
-            <div class="col-12">
+                <div class="col-12">
 
-                <div class="alert alert-warning">
+                    <div class="alert alert-warning">
 
-                    No categories found.
+                        No categories found.
+
+                    </div>
 
                 </div>
-
-            </div>
 
             <?php endif; ?>
 
@@ -250,81 +254,81 @@ LATEST JOBS
 
             <?php if (!empty($latestJobs)): ?>
 
-            <?php foreach ($latestJobs as $job): ?>
+                <?php foreach ($latestJobs as $job): ?>
 
-            <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-6">
 
-                <div class="card border-0 shadow-sm rounded-4 h-100">
+                        <div class="card border-0 shadow-sm rounded-4 h-100">
 
-                    <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($job['featured_image']) ?>"
-                        class="card-img-top" alt="<?= htmlspecialchars($job['title']) ?>"
-                        style="height:220px;object-fit:cover;">
+                            <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($job['featured_image']) ?>"
+                                class="card-img-top" alt="<?= htmlspecialchars($job['title']) ?>"
+                                style="height:220px;object-fit:cover;">
 
-                    <div class="card-body d-flex flex-column">
+                            <div class="card-body d-flex flex-column">
 
-                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
 
-                            <span class="badge bg-primary">
+                                    <span class="badge bg-primary">
 
-                                <?= htmlspecialchars($job['category_name']) ?>
+                                        <?= htmlspecialchars($job['category_name']) ?>
 
-                            </span>
+                                    </span>
 
-                            <small class="text-muted">
+                                    <small class="text-muted">
 
-                                <?= date("d M Y", strtotime($job['created_at'])) ?>
+                                        <?= date("d M Y", strtotime($job['created_at'])) ?>
 
-                            </small>
+                                    </small>
 
-                        </div>
+                                </div>
 
-                        <h5 class="fw-bold">
+                                <h5 class="fw-bold">
 
-                            <a href="<?= BASE_URL . $detailUrl ?><?= htmlspecialchars($job['slug']) ?>"
-                                class="text-dark text-decoration-none">
+                                    <a href="<?= BASE_URL . $detailUrl ?><?= htmlspecialchars($job['slug']) ?>"
+                                        class="text-dark text-decoration-none">
 
-                                <?= htmlspecialchars($job['title']) ?>
+                                        <?= htmlspecialchars($job['title']) ?>
 
-                            </a>
+                                    </a>
 
-                        </h5>
+                                </h5>
 
-                        <p class="text-muted small mt-2">
+                                <p class="text-muted small mt-2">
 
-                            <?= mb_strimwidth(strip_tags($job['short_description']),0,120,"...") ?>
+                                    <?= mb_strimwidth(strip_tags($job['short_description']), 0, 120, "...") ?>
 
-                        </p>
+                                </p>
 
-                        <div class="mt-auto">
+                                <div class="mt-auto">
 
-                            <a href="<?=BASE_URL?>job/<?= htmlspecialchars($job['slug']) ?>"
-                                class="btn btn-primary w-100">
+                                    <a href="<?= BASE_URL ?>job/<?= htmlspecialchars($job['slug']) ?>"
+                                        class="btn btn-primary w-100">
 
-                                Read Details
+                                        Read Details
 
-                            </a>
+                                    </a>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
                     </div>
 
-                </div>
-
-            </div>
-
-            <?php endforeach; ?>
+                <?php endforeach; ?>
 
             <?php else: ?>
 
-            <div class="col-12">
+                <div class="col-12">
 
-                <div class="alert alert-warning">
+                    <div class="alert alert-warning">
 
-                    No Government Jobs Available.
+                        No Government Jobs Available.
+
+                    </div>
 
                 </div>
-
-            </div>
 
             <?php endif; ?>
 
@@ -358,44 +362,44 @@ LATEST JOBS
 
         <div class="row">
 
-            <?php if(!empty($latestResults)): ?>
+            <?php if (!empty($latestResults)): ?>
 
-            <?php foreach($latestResults as $result): ?>
+                <?php foreach ($latestResults as $result): ?>
 
-            <div class="col-md-6 mb-3">
+                    <div class="col-md-6 mb-3">
 
-                <div class="list-group shadow-sm">
+                        <div class="list-group shadow-sm">
 
-                    <a href="<?= BASE_URL ?>result/<?= htmlspecialchars($result['slug']) ?>"
-                        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <a href="<?= BASE_URL ?>result/<?= htmlspecialchars($result['slug']) ?>"
+                                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
 
-                        <?= htmlspecialchars($result['title']) ?>
+                                <?= htmlspecialchars($result['title']) ?>
 
-                        <span class="badge bg-success">
+                                <span class="badge bg-success">
 
-                            New
+                                    New
 
-                        </span>
+                                </span>
 
-                    </a>
+                            </a>
 
-                </div>
+                        </div>
 
-            </div>
+                    </div>
 
-            <?php endforeach; ?>
+                <?php endforeach; ?>
 
             <?php else: ?>
 
-            <div class="col-12">
+                <div class="col-12">
 
-                <div class="alert alert-warning">
+                    <div class="alert alert-warning">
 
-                    No Results Available.
+                        No Results Available.
+
+                    </div>
 
                 </div>
-
-            </div>
 
             <?php endif; ?>
 
@@ -421,60 +425,60 @@ LATEST JOBS
 
             <?php if (!empty($latestAdmitCards)): ?>
 
-            <?php foreach ($latestAdmitCards as $card): ?>
+                <?php foreach ($latestAdmitCards as $card): ?>
 
-            <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-3 col-md-6">
 
-                <div class="card border-0 shadow-sm h-100">
+                        <div class="card border-0 shadow-sm h-100">
 
-                    <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($card['featured_image']) ?>"
-                        class="card-img-top" alt="<?= htmlspecialchars($card['title']) ?>"
-                        style="height:180px;object-fit:cover;">
+                            <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($card['featured_image']) ?>"
+                                class="card-img-top" alt="<?= htmlspecialchars($card['title']) ?>"
+                                style="height:180px;object-fit:cover;">
 
-                    <div class="card-body d-flex flex-column">
+                            <div class="card-body d-flex flex-column">
 
-                        <h5 class="fw-bold">
+                                <h5 class="fw-bold">
 
-                            <?= htmlspecialchars($card['title']) ?>
+                                    <?= htmlspecialchars($card['title']) ?>
 
-                        </h5>
+                                </h5>
 
-                        <small class="text-muted mb-3">
+                                <small class="text-muted mb-3">
 
-                            <?= date("d M Y", strtotime($card['created_at'])) ?>
+                                    <?= date("d M Y", strtotime($card['created_at'])) ?>
 
-                        </small>
+                                </small>
 
-                        <div class="mt-auto">
+                                <div class="mt-auto">
 
-                            <a href="<?= BASE_URL ?>admit-card/<?= htmlspecialchars($card['slug']) ?>"
-                                class="btn btn-primary w-100">
+                                    <a href="<?= BASE_URL ?>admit-card/<?= htmlspecialchars($card['slug']) ?>"
+                                        class="btn btn-primary w-100">
 
-                                Download Admit Card
+                                        Download Admit Card
 
-                            </a>
+                                    </a>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
                     </div>
 
-                </div>
-
-            </div>
-
-            <?php endforeach; ?>
+                <?php endforeach; ?>
 
             <?php else: ?>
 
-            <div class="col-12">
+                <div class="col-12">
 
-                <div class="alert alert-warning">
+                    <div class="alert alert-warning">
 
-                    No Admit Cards Available.
+                        No Admit Cards Available.
+
+                    </div>
 
                 </div>
-
-            </div>
 
             <?php endif; ?>
 
@@ -521,77 +525,77 @@ CURRENT AFFAIRS
 
             <?php if (!empty($currentAffairs)): ?>
 
-            <?php foreach ($currentAffairs as $news): ?>
+                <?php foreach ($currentAffairs as $news): ?>
 
-            <div class="col-lg-4">
+                    <div class="col-lg-4">
 
-                <div class="card border-0 shadow-sm h-100">
+                        <div class="card border-0 shadow-sm h-100">
 
-                    <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($news['featured_image']) ?>"
-                        class="card-img-top" alt="<?= htmlspecialchars($news['title']) ?>"
-                        style="height:220px;object-fit:cover;">
+                            <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($news['featured_image']) ?>"
+                                class="card-img-top" alt="<?= htmlspecialchars($news['title']) ?>"
+                                style="height:220px;object-fit:cover;">
 
-                    <div class="card-body d-flex flex-column">
+                            <div class="card-body d-flex flex-column">
 
-                        <span class="badge bg-primary mb-2">
+                                <span class="badge bg-primary mb-2">
 
-                            Current Affairs
+                                    Current Affairs
 
-                        </span>
+                                </span>
 
-                        <h5 class="fw-bold">
+                                <h5 class="fw-bold">
 
-                            <a href="<?= BASE_URL ?>current-affairs/<?= htmlspecialchars($news['slug']) ?>"
-                                class="text-decoration-none text-dark">
+                                    <a href="<?= BASE_URL ?>current-affairs/<?= htmlspecialchars($news['slug']) ?>"
+                                        class="text-decoration-none text-dark">
 
-                                <?= htmlspecialchars($news['title']) ?>
+                                        <?= htmlspecialchars($news['title']) ?>
 
-                            </a>
+                                    </a>
 
-                        </h5>
+                                </h5>
 
-                        <small class="text-muted mb-3">
+                                <small class="text-muted mb-3">
 
-                            <?= date("d M Y", strtotime($news['created_at'])) ?>
+                                    <?= date("d M Y", strtotime($news['created_at'])) ?>
 
-                        </small>
+                                </small>
 
-                        <p class="text-muted">
+                                <p class="text-muted">
 
-                            <?= mb_strimwidth(strip_tags($news['short_description']), 0, 120, "...") ?>
+                                    <?= mb_strimwidth(strip_tags($news['short_description']), 0, 120, "...") ?>
 
-                        </p>
+                                </p>
 
-                        <div class="mt-auto">
+                                <div class="mt-auto">
 
-                            <a href="<?= BASE_URL ?>current-affairs/<?= htmlspecialchars($news['slug']) ?>"
-                                class="btn btn-primary w-100">
+                                    <a href="<?= BASE_URL ?>current-affairs/<?= htmlspecialchars($news['slug']) ?>"
+                                        class="btn btn-primary w-100">
 
-                                Read More
+                                        Read More
 
-                            </a>
+                                    </a>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
                     </div>
 
-                </div>
-
-            </div>
-
-            <?php endforeach; ?>
+                <?php endforeach; ?>
 
             <?php else: ?>
 
-            <div class="col-12">
+                <div class="col-12">
 
-                <div class="alert alert-warning">
+                    <div class="alert alert-warning">
 
-                    No Current Affairs Available.
+                        No Current Affairs Available.
+
+                    </div>
 
                 </div>
-
-            </div>
 
             <?php endif; ?>
 
@@ -729,7 +733,7 @@ CURRENT AFFAIRS
 
             </div>
 
-            <a href="#" class="btn btn-outline-primary">
+            <a href="<?= BASE_URL ?>pdf/" class="btn btn-outline-primary">
                 View Store
             </a>
 
@@ -739,85 +743,85 @@ CURRENT AFFAIRS
 
             <?php if (!empty($pdfProducts)): ?>
 
-            <?php foreach ($pdfProducts as $pdf): ?>
+                <?php foreach ($pdfProducts as $pdf): ?>
 
-            <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-3 col-md-6">
 
-                <div class="card border-0 shadow-sm h-100">
+                        <div class="card border-0 shadow-sm h-100">
 
-                    <img src="<?= BASE_URL ?>admin_hub/uploads/pdf-images/<?= htmlspecialchars($pdf['featured_image']) ?>"
-                        class="card-img-top" alt="<?= htmlspecialchars($pdf['title']) ?>"
-                        style="height:260px;object-fit:cover;">
+                            <img src="<?= BASE_URL ?>admin_hub/uploads/pdf-images/<?= htmlspecialchars($pdf['featured_image']) ?>"
+                                class="card-img-top" alt="<?= htmlspecialchars($pdf['title']) ?>"
+                                style="height:260px;object-fit:cover;">
 
-                    <div class="card-body d-flex flex-column">
+                            <div class="card-body d-flex flex-column">
 
-                        <h5 class="fw-bold">
+                                <h5 class="fw-bold">
 
-                            <a href="<?= BASE_URL ?>pdf/<?= htmlspecialchars($pdf['slug']) ?>"
-                                class="text-decoration-none text-dark">
+                                    <a href="<?= BASE_URL ?>pdf/<?= htmlspecialchars($pdf['slug']) ?>"
+                                        class="text-decoration-none text-dark">
 
-                                <?= htmlspecialchars($pdf['title']) ?>
+                                        <?= htmlspecialchars($pdf['title']) ?>
 
-                            </a>
+                                    </a>
 
-                        </h5>
+                                </h5>
 
-                        <div class="small text-muted mb-3">
+                                <div class="small text-muted mb-3">
 
-                            <?= (int)$pdf['pages'] ?> Pages
+                                    <?= (int) $pdf['pages'] ?> Pages
 
-                            <?php if (!empty($pdf['file_size'])): ?>
+                                    <?php if (!empty($pdf['file_size'])): ?>
 
-                            • <?= htmlspecialchars($pdf['file_size']) ?>
+                                        • <?= htmlspecialchars($pdf['file_size']) ?>
 
-                            <?php endif; ?>
+                                    <?php endif; ?>
 
-                        </div>
+                                </div>
 
-                        <h4 class="text-primary mb-3">
+                                <h4 class="text-primary mb-3">
 
-                            <?php if ((float)$pdf['price'] <= 0): ?>
+                                    <?php if ((float) $pdf['price'] <= 0): ?>
 
-                            Free
+                                        Free
 
-                            <?php else: ?>
+                                    <?php else: ?>
 
-                            ₹<?= number_format($pdf['price'], 2) ?>
+                                        ₹<?= number_format($pdf['price'], 2) ?>
 
-                            <?php endif; ?>
+                                    <?php endif; ?>
 
-                        </h4>
+                                </h4>
 
-                        <div class="mt-auto">
+                                <div class="mt-auto">
 
-                            <a href="<?= BASE_URL ?>pdf/<?= htmlspecialchars($pdf['slug']) ?>"
-                                class="btn btn-primary w-100">
+                                    <a href="<?= BASE_URL ?>pdf/<?= htmlspecialchars($pdf['slug']) ?>"
+                                        class="btn btn-primary w-100">
 
-                                View Details
+                                        View Details
 
-                            </a>
+                                    </a>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
                     </div>
 
-                </div>
-
-            </div>
-
-            <?php endforeach; ?>
+                <?php endforeach; ?>
 
             <?php else: ?>
 
-            <div class="col-12">
+                <div class="col-12">
 
-                <div class="alert alert-warning">
+                    <div class="alert alert-warning">
 
-                    No PDF products available.
+                        No PDF products available.
+
+                    </div>
 
                 </div>
-
-            </div>
 
             <?php endif; ?>
 
@@ -869,7 +873,7 @@ CURRENT AFFAIRS
 
 </section>
 <script>
-const BASE_URL = "<?= BASE_URL ?>";
+    const BASE_URL = "<?= BASE_URL ?>";
 </script>
 
 <script src="<?= BASE_URL ?>assets/js/home.js"></script>

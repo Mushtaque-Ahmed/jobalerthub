@@ -87,23 +87,23 @@ include "../includes/navbar.php";
 
                             <p><strong>File Size:</strong> <?= htmlspecialchars($pdf["file_size"]) ?></p>
 
-                            <p><strong>Downloads:</strong> <?= (int)$pdf["downloads"] ?></p>
+                            <p><strong>Downloads:</strong> <?= (int) $pdf["downloads"] ?></p>
 
                             <p>
 
                                 <strong>Price:</strong>
 
-                                <?php if($pdf["is_free"]): ?>
+                                <?php if ($pdf["is_free"]): ?>
 
-                                <span class="badge bg-success">
+                                    <span class="badge bg-success">
 
-                                    FREE
+                                        FREE
 
-                                </span>
+                                    </span>
 
                                 <?php else: ?>
 
-                                ₹<?= number_format($pdf["price"],2) ?>
+                                    ₹<?= number_format($pdf["price"], 2) ?>
 
                                 <?php endif; ?>
 
@@ -119,21 +119,22 @@ include "../includes/navbar.php";
 
                     <hr>
 
-                    <?php if($pdf["is_free"]): ?>
+                    <?php if ($pdf["is_free"]): ?>
 
-                    <a href="<?= htmlspecialchars($pdf["pdf_file"]) ?>" class="btn btn-success btn-lg" target="_blank">
+                        <a href="<?= BASE_URL ?>download.php?slug=<?= urlencode($pdf["slug"]) ?>"
+                            class="btn btn-success btn-lg">
 
-                        Download PDF
+                            <i class="bi bi-download"></i> Download PDF
 
-                    </a>
+                        </a>
 
                     <?php else: ?>
 
-                    <a href="#" class="btn btn-primary btn-lg">
+                        <a href="#" class="btn btn-primary btn-lg">
 
-                        Buy Now
+                            Buy Now
 
-                    </a>
+                        </a>
 
                     <?php endif; ?>
 
@@ -157,14 +158,14 @@ include "../includes/navbar.php";
 
                 <div class="list-group list-group-flush">
 
-                    <?php foreach($relatedPdf as $item): ?>
+                    <?php foreach ($relatedPdf as $item): ?>
 
-                    <a href="<?= BASE_URL ?>pdf/<?= urlencode($item["slug"]) ?>"
-                        class="list-group-item list-group-item-action">
+                        <a href="<?= BASE_URL ?>pdf/<?= urlencode($item["slug"]) ?>"
+                            class="list-group-item list-group-item-action">
 
-                        <?= htmlspecialchars($item["title"]) ?>
+                            <?= htmlspecialchars($item["title"]) ?>
 
-                    </a>
+                        </a>
 
                     <?php endforeach; ?>
 
@@ -192,14 +193,14 @@ include "../includes/navbar.php";
 
                 <div class="list-group list-group-flush">
 
-                    <?php foreach($latestPdf as $item): ?>
+                    <?php foreach ($latestPdf as $item): ?>
 
-                    <a href="<?= BASE_URL ?>pdf/<?= urlencode($item["slug"]) ?>"
-                        class="list-group-item list-group-item-action">
+                        <a href="<?= BASE_URL ?>pdf/<?= urlencode($item["slug"]) ?>"
+                            class="list-group-item list-group-item-action">
 
-                        <?= htmlspecialchars($item["title"]) ?>
+                            <?= htmlspecialchars($item["title"]) ?>
 
-                    </a>
+                        </a>
 
                     <?php endforeach; ?>
 

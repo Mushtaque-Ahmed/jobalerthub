@@ -67,17 +67,17 @@ NAVBAR
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="<?= BASE_URL ?>answer-key" class="nav-link">
                         Answer Keys
                     </a>
-                </li>
+                </li> -->
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="<?= BASE_URL ?>current-affair" class="nav-link">
                         Current Affairs
                     </a>
-                </li>
+                </li> -->
 
                 <li class="nav-item">
                     <a href="<?= BASE_URL ?>pdf" class="nav-link">

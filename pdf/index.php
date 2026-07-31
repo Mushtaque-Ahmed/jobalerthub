@@ -82,7 +82,7 @@ include "../includes/navbar.php";
 
             <div class="card shadow-sm h-100">
 
-                <img src="<?= BASE_URL ?>admin_hub/uploads/pdf/<?= htmlspecialchars($pdf["featured_image"]) ?>"
+                <img src="<?= BASE_URL ?>admin_hub/uploads/pdf-images/<?= htmlspecialchars($pdf["featured_image"]) ?>"
                     class="card-img-top" style="height:250px;object-fit:cover;">
 
                 <div class="card-body d-flex flex-column">
