@@ -194,6 +194,7 @@ $data["current_affairs"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
      SELECT
     c.id,
     c.name,
+    c.icon,
     c.slug,
     COUNT(p.id) AS total_posts
 FROM categories c

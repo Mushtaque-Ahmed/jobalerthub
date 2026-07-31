@@ -114,7 +114,7 @@ HERO SECTION
 
             <div class="col-lg-5 text-center">
 
-                <img src="assets/images/hero.webp" class="img-fluid" alt="Government Jobs">
+                <img src="<?= BASE_URL ?>assets/image/Government-Jobs.webp" class="img-fluid" alt="Government Jobs">
 
             </div>
 
@@ -171,7 +171,7 @@ QUICK CATEGORIES
 
                             <div class="display-5 text-primary mb-3">
 
-                                <i class="bi bi-folder-fill"></i>
+                                <i class=" <?= htmlspecialchars($category['icon']) ?>"></i>
 
                             </div>
 
