@@ -47,130 +47,126 @@ include "../includes/navbar.php";
         </div>
 
     <?php endif; ?>
-<?php if (!empty($posts)): ?>
+    <?php if (!empty($posts)): ?>
 
-<h3 class="mb-3">
+        <h3 class="mb-3">
 
-    Posts
+            Posts
 
-</h3>
+        </h3>
 
-<div class="row">
+        <div class="row">
 
-<?php
+            <?php
 
-$route=[
+            $route = [
 
-"job"=>"job",
+                "job" => "job",
 
-"result"=>"result",
+                "result" => "result",
 
-"admit_card"=>"admit-card",
+                "admit_card" => "admit-card",
 
-"answer_key"=>"answer-key",
+                "answer_key" => "answer-key",
 
-"current_affairs"=>"current-affair"
+                "current_affairs" => "current-affair"
 
-];
+            ];
 
-foreach($posts as $post):
+            foreach ($posts as $post):
 
-$link=$route[$post["post_type"]] ?? "job";
+                $link = $route[$post["post_type"]] ?? "job";
 
-?>
+                ?>
 
-<div class="col-lg-4 mb-4">
+                <div class="col-lg-4 mb-4">
 
-<div class="card shadow-sm h-100">
+                    <div class="card shadow-sm h-100">
 
-<img src="<?=BASE_URL?>admin_hub/uploads/posts/<?=htmlspecialchars($post["featured_image"])?>"
-class="card-img-top"
-style="height:220px;object-fit:cover;">
+                        <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($post["featured_image"]) ?>"
+                            class="card-img-top" style="height:220px;object-fit:cover;">
 
-<div class="card-body">
+                        <div class="card-body">
 
-<h5>
+                            <h5>
 
-<?=htmlspecialchars($post["title"])?>
+                                <?= htmlspecialchars($post["title"]) ?>
 
-</h5>
+                            </h5>
 
-<p class="text-muted">
+                            <p class="text-muted">
 
-<?=ucwords(str_replace("_"," ",$post["post_type"]))?>
+                                <?= ucwords(str_replace("_", " ", $post["post_type"])) ?>
 
-</p>
+                            </p>
 
-<a href="<?=BASE_URL.$link?>/<?=urlencode($post["slug"])?>"
-class="btn btn-primary">
+                            <a href="<?= BASE_URL . $link ?>/<?= urlencode($post["slug"]) ?>" class="btn btn-primary">
 
-Read Details
+                                Read Details
 
-</a>
+                            </a>
 
-</div>
+                        </div>
 
-</div>
+                    </div>
 
-</div>
+                </div>
 
-<?php endforeach; ?>
+            <?php endforeach; ?>
 
-</div>
+        </div>
 
-<?php endif; ?>
-<?php if(!empty($pdfs)): ?>
+    <?php endif; ?>
+    <?php if (!empty($pdfs)): ?>
 
-<h3 class="mt-5 mb-3">
+        <h3 class="mt-5 mb-3">
 
-PDF Products
+            PDF Products
 
-</h3>
+        </h3>
 
-<div class="row">
+        <div class="row">
 
-<?php foreach($pdfs as $pdf): ?>
+            <?php foreach ($pdfs as $pdf): ?>
 
-<div class="col-lg-3 mb-4">
+                <div class="col-lg-3 mb-4">
 
-<div class="card shadow-sm h-100">
+                    <div class="card shadow-sm h-100">
 
-<img src="<?=BASE_URL?>admin_hub/uploads/pdf/<?=htmlspecialchars($pdf["featured_image"])?>"
-class="card-img-top"
-style="height:220px;object-fit:cover;">
+                        <img src="<?= BASE_URL ?>admin_hub/uploads/pdf/<?= htmlspecialchars($pdf["featured_image"]) ?>"
+                            class="card-img-top" style="height:220px;object-fit:cover;">
 
-<div class="card-body">
+                        <div class="card-body">
 
-<h5>
+                            <h5>
 
-<?=htmlspecialchars($pdf["title"])?>
+                                <?= htmlspecialchars($pdf["title"]) ?>
 
-</h5>
+                            </h5>
 
-<p>
+                            <p>
 
-<?= (int)$pdf["pages"] ?> Pages
+                                <?= (int) $pdf["pages"] ?> Pages
 
-</p>
+                            </p>
 
-<a href="<?=BASE_URL?>pdf/<?=urlencode($pdf["slug"])?>"
-class="btn btn-success w-100">
+                            <a href="<?= BASE_URL ?>pdf/<?= urlencode($pdf["slug"]) ?>" class="btn btn-success w-100">
 
-View PDF
+                                View PDF
 
-</a>
+                            </a>
 
-</div>
+                        </div>
 
-</div>
+                    </div>
 
-</div>
+                </div>
 
-<?php endforeach; ?>
+            <?php endforeach; ?>
 
-</div>
+        </div>
 
-<?php endif; ?>
+    <?php endif; ?>
 </div>
 
 <?php
