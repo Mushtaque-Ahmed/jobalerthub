@@ -11,17 +11,7 @@ require_once "includes/database.php";
 include "includes/header.php";
 
 
-$json = file_get_contents("http://localhost/jobalerthub/api/home/home.php");
 
-$response = json_decode($json, true);
-
-if (!$response || !$response["success"]) {
-    die("Unable to load homepage.");
-}
-
-$data = $response["data"];
-
-$settings = $data["settings"];
 $stats = $data["statistics"];
 $categories = $data["categories"];
 $latestJobs = $data["latest_jobs"];
@@ -57,8 +47,9 @@ HERO SECTION
 
                 <p class="lead mt-3">
 
-                    Find Government Jobs, Results, Admit Cards,
-                    Current Affairs and Premium Study Materials.
+                    Stay updated with the latest Assam Government Jobs, Sarkari Results, Admit Cards, Answer Keys,
+                    Current Affairs and premium study materials. Get daily job alerts and never miss an important
+                    recruitment notification.
 
                 </p>
 
@@ -837,33 +828,30 @@ CURRENT AFFAIRS
 
     <div class="container text-center">
 
-        <h2>
+        <h2>Get Daily Job Alerts</h2>
 
-            Get Daily Job Alerts
-
-        </h2>
-
-        <p>
-
-            Subscribe to receive latest Government Jobs & Results.
-
-        </p>
+        <p>Subscribe to receive latest Government Jobs & Results.</p>
 
         <div class="row justify-content-center">
 
             <div class="col-lg-6">
 
-                <div class="input-group">
+                <form id="newsletterForm">
 
-                    <input type="email" class="form-control form-control-lg" placeholder="Enter your email">
+                    <div class="input-group">
 
-                    <button class="btn btn-warning">
+                        <input type="email" id="newsletterEmail" class="form-control form-control-lg"
+                            placeholder="Enter your email" required>
 
-                        Subscribe
+                        <button class="btn btn-warning" type="submit">
 
-                    </button>
+                            Subscribe
 
-                </div>
+                        </button>
+
+                    </div>
+
+                </form>
 
             </div>
 
@@ -877,6 +865,8 @@ CURRENT AFFAIRS
 </script>
 
 <script src="<?= BASE_URL ?>assets/js/home.js"></script>
+<script src="<?= BASE_URL ?>assets/js/newsletter.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <?php
 
 include "includes/footer.php";

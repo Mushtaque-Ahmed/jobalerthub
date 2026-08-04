@@ -35,7 +35,7 @@
 
                     <li>
 
-                        <a href="/">
+                        <a href="<?= BASE_URL ?>">
 
                             Home
 
@@ -45,7 +45,7 @@
 
                     <li>
 
-                        <a href="/jobs/">
+                        <a href="<?= BASE_URL ?>jobs/">
 
                             Jobs
 
@@ -55,7 +55,7 @@
 
                     <li>
 
-                        <a href="/results/">
+                        <a href="<?= BASE_URL ?>results/">
 
                             Results
 
@@ -69,17 +69,47 @@
 
             <div class="col-md-4">
 
-                <h5>
+                <h5>Follow Us</h5>
 
-                    Follow
+                <div class="d-flex gap-3 mt-3">
 
-                </h5>
+                    <?php if (!empty($settings['facebook'])): ?>
+                        <a href="<?= htmlspecialchars($settings['facebook']) ?>" target="_blank" class="text-white fs-3">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                    <?php endif; ?>
 
-                <i class="bi bi-facebook fs-3"></i>
+                    <?php if (!empty($settings['instagram'])): ?>
+                        <a href="<?= htmlspecialchars($settings['instagram']) ?>" target="_blank" class="text-white fs-3">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                    <?php endif; ?>
 
-                <i class="bi bi-instagram fs-3"></i>
+                    <?php if (!empty($settings['youtube'])): ?>
+                        <a href="<?= htmlspecialchars($settings['youtube']) ?>" target="_blank" class="text-white fs-3">
+                            <i class="bi bi-youtube"></i>
+                        </a>
+                    <?php endif; ?>
 
-                <i class="bi bi-youtube fs-3"></i>
+                    <?php if (!empty($settings['telegram'])): ?>
+                        <a href="<?= htmlspecialchars($settings['telegram']) ?>" target="_blank" class="text-white fs-3">
+                            <i class="bi bi-telegram"></i>
+                        </a>
+                    <?php endif; ?>
+
+                    <?php if (!empty($settings['twitter'])): ?>
+                        <a href="<?= htmlspecialchars($settings['twitter']) ?>" target="_blank" class="text-white fs-3">
+                            <i class="bi bi-twitter-x"></i>
+                        </a>
+                    <?php endif; ?>
+
+                    <?php if (!empty($settings['linkedin'])): ?>
+                        <a href="<?= htmlspecialchars($settings['linkedin']) ?>" target="_blank" class="text-white fs-3">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    <?php endif; ?>
+
+                </div>
 
             </div>
 
@@ -92,7 +122,7 @@
             ©
             <?= date('Y'); ?>
 
-            JobAlertHub
+            <?= htmlspecialchars($settings["site_name"] ?? "JobAlertHub") ?>
 
         </div>
 
@@ -102,7 +132,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="<?=BASE_URL ?>assets/js/app.js"></script>
+<script src="<?= BASE_URL ?>assets/js/app.js"></script>
 
 </body>
 

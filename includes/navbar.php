@@ -30,7 +30,14 @@ NAVBAR
     <div class="container">
 
         <a href="<?= BASE_URL ?>" class="navbar-brand">
-            <img src="<?= BASE_URL ?>assets/image/logo3.PNG" alt="JobAlertHub Logo" height="45">
+
+             <img src="<?= BASE_URL ?>admin_hub/uploads/settings/<?= htmlspecialchars($settings['site_logo']) ??''?>"
+         alt="<?= htmlspecialchars($settings['site_name']) ?>"
+         height="50"
+         class="me-2">
+            <span class="fw-bold fs-4">
+        <?= htmlspecialchars($settings['site_name']) ?>
+    </span>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
