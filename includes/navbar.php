@@ -30,15 +30,29 @@ NAVBAR
     <div class="container">
 
         <a href="<?= BASE_URL ?>" class="navbar-brand">
-
-             <img src="<?= BASE_URL ?>admin_hub/uploads/settings/<?= htmlspecialchars($settings['site_logo']) ??''?>"
-         alt="<?= htmlspecialchars($settings['site_name']) ?>"
-         height="50"
-         class="me-2">
-            <span class="fw-bold fs-4">
-        <?= htmlspecialchars($settings['site_name']) ?>
-    </span>
+            <img src="<?= BASE_URL ?>admin_hub/uploads/settings/logo.png"
+                alt="<?= htmlspecialchars($settings['site_name']) ?>" class="img-fluid navbar-logo me-2">
         </a>
+
+        <style>
+        /* Custom CSS to control the size */
+        .navbar-logo {
+            max-height: 70px;
+            /* Limits the size on desktop */
+            height: auto;
+            width: auto;
+            object-fit: contain;
+            /* Prevents stretching */
+        }
+
+        /* Optional Mobile specific adjustments */
+        @media (max-width: 768px) {
+            .navbar-logo {
+                max-height: 60px;
+                /* Smaller size on smaller screens */
+            }
+        }
+        </style>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
 
@@ -51,26 +65,31 @@ NAVBAR
             <ul class="navbar-nav ms-auto align-items-lg-center">
 
                 <li class="nav-item">
-                    <a href="<?= BASE_URL ?>" class="nav-link">
+                    <a class="nav-link <?= ($activePage==BASE_URL) ? "active fw-bold text-primary" : "" ?>"
+                        href="<?= BASE_URL ?>">
                         Home
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?= BASE_URL ?>job/" class="nav-link">
-                        Latest Jobs
+
+                    <a class="nav-link <?= ($activePage=="job") ? "active fw-bold text-primary" : "" ?>"
+                        href="<?= BASE_URL ?>job/">
+                        Jobs
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?= BASE_URL ?>result" class="nav-link">
+                    <a class="nav-link <?= ($activePage=="result") ? "active fw-bold text-primary" : "" ?>"
+                        href="<?= BASE_URL ?>result">
                         Results
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?= BASE_URL ?>admit-card" class="nav-link">
-                        Admit Cards
+                    <a class="nav-link <?= ($activePage=="admit-card") ? "active fw-bold text-primary" : "" ?>"
+                        href="<?= BASE_URL ?>admit-card">
+                        Admit Card
                     </a>
                 </li>
 
@@ -87,8 +106,9 @@ NAVBAR
                 </li> -->
 
                 <li class="nav-item">
-                    <a href="<?= BASE_URL ?>pdf" class="nav-link">
-                        PDF Notes
+                    <a class="nav-link <?= ($activePage=="pdf") ? "active fw-bold text-primary" : "" ?>"
+                        href="<?= BASE_URL ?>pdf">
+                        PDFs
                     </a>
                 </li>
 

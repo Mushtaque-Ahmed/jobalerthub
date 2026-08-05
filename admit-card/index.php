@@ -1,10 +1,9 @@
 <?php
 
 require_once "../includes/config.php";
-
+$activePage = "admit-card";
 $type = "admit_card";
 
-$pageTitle = "Latest Admit Cards";
 
 $page = max(1, (int)($_GET['page'] ?? 1));
 
@@ -39,7 +38,17 @@ $posts = $response["posts"] ?? [];
 $categories = $response["categories"] ?? [];
 $pagination = $response["pagination"] ?? [];
 
-$page_title = $pageTitle;
+$page_title = "Latest Admit Cards | JobAdAssam";
+
+$meta_description =
+"Download the latest Government Admit Cards, Hall Tickets and Exam Call Letters.";
+
+$meta_keywords =
+"Admit Card, Hall Ticket, Assam Admit Card";
+
+$canonical = BASE_URL."admit-card";
+
+$og_image = BASE_URL."assets/image/admit-card-banner.webp";
 
 include "../includes/header.php";
 include "../includes/navbar.php";

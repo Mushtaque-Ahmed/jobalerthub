@@ -46,6 +46,23 @@ $meta_description = !empty($pdf["seo_description"])
 
 $meta_keywords = $pdf["seo_keywords"] ?? "";
 
+$canonical = BASE_URL . "pdf/" . $pdf["slug"];
+
+/* Open Graph */
+
+$og_title = $page_title;
+
+$og_description = $meta_description;
+
+$og_url = $canonical;
+
+$og_image = !empty($pdf["featured_image"])
+    ? BASE_URL . "admin_hub/uploads/pdf/" . $pdf["featured_image"]
+    : BASE_URL . "assets/image/default-og.webp";
+
+$og_type = "article";
+
+
 include "../includes/header.php";
 include "../includes/navbar.php";
 ?>
@@ -95,15 +112,15 @@ include "../includes/navbar.php";
 
                                 <?php if ($pdf["is_free"]): ?>
 
-                                    <span class="badge bg-success">
+                                <span class="badge bg-success">
 
-                                        FREE
+                                    FREE
 
-                                    </span>
+                                </span>
 
                                 <?php else: ?>
 
-                                    ₹<?= number_format($pdf["price"], 2) ?>
+                                ₹<?= number_format($pdf["price"], 2) ?>
 
                                 <?php endif; ?>
 
@@ -121,20 +138,20 @@ include "../includes/navbar.php";
 
                     <?php if ($pdf["is_free"]): ?>
 
-                        <a href="<?= BASE_URL ?>download.php?slug=<?= urlencode($pdf["slug"]) ?>"
-                            class="btn btn-success btn-lg">
+                    <a href="<?= BASE_URL ?>download.php?slug=<?= urlencode($pdf["slug"]) ?>"
+                        class="btn btn-success btn-lg">
 
-                            <i class="bi bi-download"></i> Download PDF
+                        <i class="bi bi-download"></i> Download PDF
 
-                        </a>
+                    </a>
 
                     <?php else: ?>
 
-                        <a href="#" class="btn btn-primary btn-lg">
+                    <a href="#" class="btn btn-primary btn-lg">
 
-                            Buy Now
+                        Buy Now
 
-                        </a>
+                    </a>
 
                     <?php endif; ?>
 
@@ -160,12 +177,12 @@ include "../includes/navbar.php";
 
                     <?php foreach ($relatedPdf as $item): ?>
 
-                        <a href="<?= BASE_URL ?>pdf/<?= urlencode($item["slug"]) ?>"
-                            class="list-group-item list-group-item-action">
+                    <a href="<?= BASE_URL ?>pdf/<?= urlencode($item["slug"]) ?>"
+                        class="list-group-item list-group-item-action">
 
-                            <?= htmlspecialchars($item["title"]) ?>
+                        <?= htmlspecialchars($item["title"]) ?>
 
-                        </a>
+                    </a>
 
                     <?php endforeach; ?>
 
@@ -195,12 +212,12 @@ include "../includes/navbar.php";
 
                     <?php foreach ($latestPdf as $item): ?>
 
-                        <a href="<?= BASE_URL ?>pdf/<?= urlencode($item["slug"]) ?>"
-                            class="list-group-item list-group-item-action">
+                    <a href="<?= BASE_URL ?>pdf/<?= urlencode($item["slug"]) ?>"
+                        class="list-group-item list-group-item-action">
 
-                            <?= htmlspecialchars($item["title"]) ?>
+                        <?= htmlspecialchars($item["title"]) ?>
 
-                        </a>
+                    </a>
 
                     <?php endforeach; ?>
 

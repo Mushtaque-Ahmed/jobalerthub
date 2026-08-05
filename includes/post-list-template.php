@@ -36,7 +36,7 @@ $detailUrl = $route[$type] ?? "job";
 
             <li class="breadcrumb-item active">
 
-                <?= $pageTitle ?>
+                <?= $page_title ?>
 
             </li>
 
@@ -47,7 +47,7 @@ $detailUrl = $route[$type] ?? "job";
     <div class="d-flex justify-content-between align-items-center mb-4">
 
         <h1>
-            <?= $pageTitle ?>
+            <?= $page_title ?>
         </h1>
 
     </div>
@@ -73,11 +73,11 @@ $detailUrl = $route[$type] ?? "job";
 
                 <?php foreach ($categories as $cat): ?>
 
-                    <option value="<?= $cat["id"] ?>" <?= $category == $cat["id"] ? 'selected' : '' ?>>
+                <option value="<?= $cat["id"] ?>" <?= $category == $cat["id"] ? 'selected' : '' ?>>
 
-                        <?= $cat["name"] ?>
+                    <?= $cat["name"] ?>
 
-                    </option>
+                </option>
 
                 <?php endforeach; ?>
 
@@ -100,70 +100,70 @@ $detailUrl = $route[$type] ?? "job";
 
         <?php foreach ($posts as $post): ?>
 
-            <div class="col-lg-4 mb-4">
+        <div class="col-lg-4 mb-4">
 
-                <div class="card shadow-sm h-100">
+            <div class="card shadow-sm h-100">
 
-                    <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($post["featured_image"]) ?>"
-                        class="card-img-top">
+                <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($post["featured_image"]) ?>"
+                    class="card-img-top">
 
-                    <div class="card-body d-flex flex-column">
+                <div class="card-body d-flex flex-column">
 
-                        <h5>
+                    <h5>
 
-                            <?= htmlspecialchars($post["title"]) ?>
+                        <?= htmlspecialchars($post["title"]) ?>
 
-                        </h5>
+                    </h5>
 
-                        <p>
+                    <p>
 
-                            <strong>Organization:</strong>
+                        <strong>Organization:</strong>
 
-                            <?= htmlspecialchars($post["organization"]) ?>
+                        <?= htmlspecialchars($post["organization"]) ?>
 
-                        </p>
+                    </p>
 
-                        <p>
+                    <p>
 
-                            <strong>Qualification:</strong>
+                        <strong>Qualification:</strong>
 
-                            <?= htmlspecialchars($post["qualification"]) ?>
+                        <?= htmlspecialchars($post["qualification"]) ?>
 
-                        </p>
+                    </p>
 
-                        <p>
+                    <p>
 
-                            <strong>Vacancy:</strong>
+                        <strong>Vacancy:</strong>
 
-                            <?= htmlspecialchars($post["total_posts"]) ?>
+                        <?= htmlspecialchars($post["total_posts"]) ?>
 
-                        </p>
+                    </p>
 
-                        <p>
+                    <p>
 
-                            <strong>Last Date:</strong>
+                        <strong>Last Date:</strong>
 
-                            <?= !empty($post["apply_last"])
+                        <?= !empty($post["apply_last"])
                                 ? date("d M Y", strtotime($post["apply_last"]))
                                 : "N/A" ?>
 
-                        </p>
+                    </p>
 
-                        <div class="mt-auto">
+                    <div class="mt-auto">
 
-                            <a href="<?= BASE_URL ?>job/<?= urlencode($post["slug"]) ?>" class="btn btn-primary w-100">
+                        <a href="<?= BASE_URL ?>job/<?= urlencode($post["slug"]) ?>" class="btn btn-primary w-100">
 
-                                Read Details
+                            Read Details
 
-                            </a>
-
-                        </div>
+                        </a>
 
                     </div>
 
                 </div>
 
             </div>
+
+        </div>
 
         <?php endforeach; ?>
 
@@ -179,15 +179,15 @@ $detailUrl = $route[$type] ?? "job";
 
         ?>
 
-        <nav>
+    <nav>
 
-            <ul class="pagination justify-content-center">
+        <ul class="pagination justify-content-center">
 
-                <?php for ($i = 1; $i <= $total; $i++): ?>
+            <?php for ($i = 1; $i <= $total; $i++): ?>
 
-                    <li class="page-item <?= $current == $i ? 'active' : '' ?>">
+            <li class="page-item <?= $current == $i ? 'active' : '' ?>">
 
-                        <a class="page-link" href="?page=<?= $i ?>
+                <a class="page-link" href="?page=<?= $i ?>
 
                                 <?php if ($search != ""): ?>
 
@@ -201,17 +201,17 @@ $detailUrl = $route[$type] ?? "job";
 
                                    <?php endif; ?>">
 
-                            <?= $i ?>
+                    <?= $i ?>
 
-                        </a>
+                </a>
 
-                    </li>
+            </li>
 
-                <?php endfor; ?>
+            <?php endfor; ?>
 
-            </ul>
+        </ul>
 
-        </nav>
+    </nav>
 
     <?php endif; ?>
 

@@ -94,6 +94,9 @@ try {
         p.pages,
         p.language,
         p.author,
+        p.seo_title,
+        p.seo_description,
+        p.seo_keywords,
         p.downloads,
         p.created_at,
         c.name AS category_name

@@ -1,10 +1,8 @@
 <?php
 
 require_once "../includes/config.php";
-
+$activePage = "result";
 $type = "result";
-
-$pageTitle = "Latest Result";
 
 $page = max(1, (int)($_GET['page'] ?? 1));
 
@@ -39,7 +37,17 @@ $posts = $response["posts"] ?? [];
 $categories = $response["categories"] ?? [];
 $pagination = $response["pagination"] ?? [];
 
-$page_title = $pageTitle;
+$page_title = "Latest Government Results | JobAdAssam";
+
+$meta_description =
+"Check the latest Government Exam Results, Merit Lists and Recruitment Results.";
+
+$meta_keywords =
+"Government Result, Sarkari Result, Assam Result";
+
+$canonical = BASE_URL."result";
+
+$og_image = BASE_URL."assets/image/result-banner.webp";
 
 include "../includes/header.php";
 include "../includes/navbar.php";

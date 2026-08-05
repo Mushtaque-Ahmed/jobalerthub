@@ -1,7 +1,7 @@
 <?php
 
 require_once "../includes/config.php";
-
+$activePage = "category";
 $slug = trim($_GET["slug"] ?? "");
 
 $page = max(1, (int)($_GET["page"] ?? 1));
@@ -21,6 +21,21 @@ if (!$response["success"]) {
 $posts = $response["posts"] ?? [];
 
 $categories = $response["categories"] ?? [];
+
+/*-------------------------------------
+ seo
+ -------------------------------------------*/
+ $categoryName = $response["category_name"] ?? "Jobs";
+
+$page_title = $categoryName . " Government Jobs | JobAdAssam";
+
+$meta_description = "Apply for the latest {$categoryName} Government Jobs. Check eligibility, salary, age limit, selection process, important dates and official notifications on JobAdAssam.";
+
+$meta_keywords = "{$categoryName} Jobs, {$categoryName} Recruitment, {$categoryName} Vacancy, Government Jobs, Assam Jobs";
+
+$canonical = BASE_URL . "category/" . ($_GET["slug"] ?? "");
+
+$og_image = BASE_URL . "admin_hub/uploads/settings/" . ($settings["site_logo"] ?? "logo.webp"); 
 
 $pagination = $response["pagination"] ?? [];
 

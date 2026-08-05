@@ -66,6 +66,20 @@ $meta_keywords = $job["seo_keywords"] ?? "";
 
 $canonical = BASE_URL . "result/" . $job["slug"];
 
+/* Open Graph */
+
+$og_title = $page_title;
+
+$og_description = $meta_description;
+
+$og_url = $canonical;
+
+$og_image = !empty($job["featured_image"])
+    ? BASE_URL . "admin_hub/uploads/posts/" . $job["featured_image"]
+    : BASE_URL . "assets/image/default-og.webp";
+
+$og_type = "article";
+
 include "../includes/header.php";
 
 include "../includes/navbar.php";
@@ -116,24 +130,24 @@ include "../includes/navbar.php";
 
                     <?php if (!empty($latestJobs)): ?>
 
-                        <?php foreach ($latestJobs as $item): ?>
+                    <?php foreach ($latestJobs as $item): ?>
 
-                            <a href="<?= BASE_URL ?>job/<?= urlencode($item['slug']) ?>"
-                                class="list-group-item list-group-item-action">
+                    <a href="<?= BASE_URL ?>job/<?= urlencode($item['slug']) ?>"
+                        class="list-group-item list-group-item-action">
 
-                                <?= htmlspecialchars($item['title']) ?>
+                        <?= htmlspecialchars($item['title']) ?>
 
-                            </a>
+                    </a>
 
-                        <?php endforeach; ?>
+                    <?php endforeach; ?>
 
                     <?php else: ?>
 
-                        <div class="list-group-item">
+                    <div class="list-group-item">
 
-                            No Jobs Found
+                        No Jobs Found
 
-                        </div>
+                    </div>
 
                     <?php endif; ?>
 
@@ -154,11 +168,11 @@ include "../includes/navbar.php";
 
                     <?php foreach ($categories as $category): ?>
 
-                        <a href="<?= BASE_URL . $category['slug'] ?>" class="list-group-item list-group-item-action">
+                    <a href="<?= BASE_URL . $category['slug'] ?>" class="list-group-item list-group-item-action">
 
-                            <?= htmlspecialchars($category['name']) ?>
+                        <?= htmlspecialchars($category['name']) ?>
 
-                        </a>
+                    </a>
 
                     <?php endforeach; ?>
 
@@ -178,24 +192,24 @@ include "../includes/navbar.php";
 
                     <?php if (!empty($latestResults)): ?>
 
-                        <?php foreach ($latestResults as $item): ?>
+                    <?php foreach ($latestResults as $item): ?>
 
-                            <a href="<?= BASE_URL ?>result/<?= urlencode($item['slug']) ?>"
-                                class="list-group-item list-group-item-action">
+                    <a href="<?= BASE_URL ?>result/<?= urlencode($item['slug']) ?>"
+                        class="list-group-item list-group-item-action">
 
-                                <?= htmlspecialchars($item['title']) ?>
+                        <?= htmlspecialchars($item['title']) ?>
 
-                            </a>
+                    </a>
 
-                        <?php endforeach; ?>
+                    <?php endforeach; ?>
 
                     <?php else: ?>
 
-                        <div class="list-group-item">
+                    <div class="list-group-item">
 
-                            No Results Found
+                        No Results Found
 
-                        </div>
+                    </div>
 
                     <?php endif; ?>
 
@@ -353,76 +367,76 @@ RELATED JOBS
 
                     <?php if (!empty($relatedJobs)): ?>
 
-                        <div class="row">
+                    <div class="row">
 
-                            <?php foreach ($relatedJobs as $item): ?>
+                        <?php foreach ($relatedJobs as $item): ?>
 
-                                <div class="col-md-6 mb-4">
+                        <div class="col-md-6 mb-4">
 
-                                    <div class="card h-100 border-0 shadow-sm">
+                            <div class="card h-100 border-0 shadow-sm">
 
-                                        <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($item["featured_image"]) ?>"
-                                            class="card-img-top" style="height:180px;object-fit:cover;"
-                                            alt="<?= htmlspecialchars($item["title"]) ?>">
+                                <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($item["featured_image"]) ?>"
+                                    class="card-img-top" style="height:180px;object-fit:cover;"
+                                    alt="<?= htmlspecialchars($item["title"]) ?>">
 
-                                        <div class="card-body d-flex flex-column">
+                                <div class="card-body d-flex flex-column">
 
-                                            <span class="badge bg-primary mb-2">
+                                    <span class="badge bg-primary mb-2">
 
-                                                <?= htmlspecialchars($item["category_name"]) ?>
+                                        <?= htmlspecialchars($item["category_name"]) ?>
 
-                                            </span>
+                                    </span>
 
-                                            <h5 class="card-title">
+                                    <h5 class="card-title">
 
-                                                <?= htmlspecialchars($item["title"]) ?>
+                                        <?= htmlspecialchars($item["title"]) ?>
 
-                                            </h5>
+                                    </h5>
 
-                                            <p class="text-muted small mb-2">
+                                    <p class="text-muted small mb-2">
 
-                                                <?= htmlspecialchars($item["organization"]) ?>
+                                        <?= htmlspecialchars($item["organization"]) ?>
 
-                                            </p>
+                                    </p>
 
-                                            <p class="small mb-3">
+                                    <p class="small mb-3">
 
-                                                <strong>Last Date:</strong>
+                                        <strong>Last Date:</strong>
 
-                                                <?= !empty($item["apply_last"])
+                                        <?= !empty($item["apply_last"])
                                                     ? date("d M Y", strtotime($item["apply_last"]))
                                                     : "N/A"; ?>
 
-                                            </p>
+                                    </p>
 
-                                            <div class="mt-auto">
+                                    <div class="mt-auto">
 
-                                                <a href="<?= BASE_URL ?>job/<?= urlencode($item["slug"]) ?>"
-                                                    class="btn btn-outline-primary w-100">
+                                        <a href="<?= BASE_URL ?>job/<?= urlencode($item["slug"]) ?>"
+                                            class="btn btn-outline-primary w-100">
 
-                                                    Read Details
+                                            Read Details
 
-                                                </a>
-
-                                            </div>
-
-                                        </div>
+                                        </a>
 
                                     </div>
 
                                 </div>
 
-                            <?php endforeach; ?>
+                            </div>
 
                         </div>
+
+                        <?php endforeach; ?>
+
+                    </div>
 
                     <?php else: ?>
 
-                        <div class="alert alert-light border">
+                    <div class="alert alert-light border">
 
-                            No related jobs available.
+                        No related jobs available.
 
-                        </div>
+                    </div>
 
                     <?php endif; ?>
 
@@ -499,24 +513,24 @@ RELATED JOBS
 
                     <?php if (!empty($latestPdf)): ?>
 
-                        <?php foreach ($latestPdf as $pdf): ?>
+                    <?php foreach ($latestPdf as $pdf): ?>
 
-                            <a href="<?= BASE_URL ?>pdf/<?= urlencode($pdf['slug']) ?>"
-                                class="list-group-item list-group-item-action">
+                    <a href="<?= BASE_URL ?>pdf/<?= urlencode($pdf['slug']) ?>"
+                        class="list-group-item list-group-item-action">
 
-                                <?= htmlspecialchars($pdf['title']) ?>
+                        <?= htmlspecialchars($pdf['title']) ?>
 
-                            </a>
+                    </a>
 
-                        <?php endforeach; ?>
+                    <?php endforeach; ?>
 
                     <?php else: ?>
 
-                        <div class="list-group-item">
+                    <div class="list-group-item">
 
-                            No PDFs Available
+                        No PDFs Available
 
-                        </div>
+                    </div>
 
                     <?php endif; ?>
 
@@ -536,24 +550,24 @@ RELATED JOBS
 
                     <?php if (!empty($latestAdmitCards)): ?>
 
-                        <?php foreach ($latestAdmitCards as $item): ?>
+                    <?php foreach ($latestAdmitCards as $item): ?>
 
-                            <a href="<?= BASE_URL ?>admit-card/<?= urlencode($item['slug']) ?>"
-                                class="list-group-item list-group-item-action">
+                    <a href="<?= BASE_URL ?>admit-card/<?= urlencode($item['slug']) ?>"
+                        class="list-group-item list-group-item-action">
 
-                                <?= htmlspecialchars($item['title']) ?>
+                        <?= htmlspecialchars($item['title']) ?>
 
-                            </a>
+                    </a>
 
-                        <?php endforeach; ?>
+                    <?php endforeach; ?>
 
                     <?php else: ?>
 
-                        <div class="list-group-item">
+                    <div class="list-group-item">
 
-                            No Admit Cards
+                        No Admit Cards
 
-                        </div>
+                    </div>
 
                     <?php endif; ?>
 

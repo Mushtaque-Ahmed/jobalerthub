@@ -45,7 +45,7 @@
 
                     <li>
 
-                        <a href="<?= BASE_URL ?>jobs/">
+                        <a href="<?= BASE_URL ?>job">
 
                             Jobs
 
@@ -55,7 +55,7 @@
 
                     <li>
 
-                        <a href="<?= BASE_URL ?>results/">
+                        <a href="<?= BASE_URL ?>result">
 
                             Results
 
@@ -74,39 +74,39 @@
                 <div class="d-flex gap-3 mt-3">
 
                     <?php if (!empty($settings['facebook'])): ?>
-                        <a href="<?= htmlspecialchars($settings['facebook']) ?>" target="_blank" class="text-white fs-3">
-                            <i class="bi bi-facebook"></i>
-                        </a>
+                    <a href="<?= htmlspecialchars($settings['facebook']) ?>" target="_blank" class="text-white fs-3">
+                        <i class="bi bi-facebook"></i>
+                    </a>
                     <?php endif; ?>
 
                     <?php if (!empty($settings['instagram'])): ?>
-                        <a href="<?= htmlspecialchars($settings['instagram']) ?>" target="_blank" class="text-white fs-3">
-                            <i class="bi bi-instagram"></i>
-                        </a>
+                    <a href="<?= htmlspecialchars($settings['instagram']) ?>" target="_blank" class="text-white fs-3">
+                        <i class="bi bi-instagram"></i>
+                    </a>
                     <?php endif; ?>
 
                     <?php if (!empty($settings['youtube'])): ?>
-                        <a href="<?= htmlspecialchars($settings['youtube']) ?>" target="_blank" class="text-white fs-3">
-                            <i class="bi bi-youtube"></i>
-                        </a>
+                    <a href="<?= htmlspecialchars($settings['youtube']) ?>" target="_blank" class="text-white fs-3">
+                        <i class="bi bi-youtube"></i>
+                    </a>
                     <?php endif; ?>
 
                     <?php if (!empty($settings['telegram'])): ?>
-                        <a href="<?= htmlspecialchars($settings['telegram']) ?>" target="_blank" class="text-white fs-3">
-                            <i class="bi bi-telegram"></i>
-                        </a>
+                    <a href="<?= htmlspecialchars($settings['telegram']) ?>" target="_blank" class="text-white fs-3">
+                        <i class="bi bi-telegram"></i>
+                    </a>
                     <?php endif; ?>
 
                     <?php if (!empty($settings['twitter'])): ?>
-                        <a href="<?= htmlspecialchars($settings['twitter']) ?>" target="_blank" class="text-white fs-3">
-                            <i class="bi bi-twitter-x"></i>
-                        </a>
+                    <a href="<?= htmlspecialchars($settings['twitter']) ?>" target="_blank" class="text-white fs-3">
+                        <i class="bi bi-twitter-x"></i>
+                    </a>
                     <?php endif; ?>
 
                     <?php if (!empty($settings['linkedin'])): ?>
-                        <a href="<?= htmlspecialchars($settings['linkedin']) ?>" target="_blank" class="text-white fs-3">
-                            <i class="bi bi-linkedin"></i>
-                        </a>
+                    <a href="<?= htmlspecialchars($settings['linkedin']) ?>" target="_blank" class="text-white fs-3">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
                     <?php endif; ?>
 
                 </div>
@@ -121,8 +121,7 @@
 
             ©
             <?= date('Y'); ?>
-
-            <?= htmlspecialchars($settings["site_name"] ?? "JobAlertHub") ?>
+            <?= htmlspecialchars($settings["site_name"] ?? "JobAdAssam") ?>
 
         </div>
 

@@ -66,6 +66,17 @@ $meta_keywords = $job["seo_keywords"] ?? "";
 
 $canonical = BASE_URL . "job/" . $job["slug"];
 
+/* Open Graph */
+$og_title = $page_title;
+
+$og_description = $meta_description;
+
+$og_url = $canonical;
+
+$og_image = BASE_URL . "admin_hub/uploads/posts/" . $job["featured_image"];
+
+$og_type = "article";
+
 include "../includes/header.php";
 
 include "../includes/navbar.php";

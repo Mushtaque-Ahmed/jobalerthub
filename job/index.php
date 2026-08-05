@@ -1,9 +1,9 @@
 <?php
 require_once "../includes/config.php";
-
+$activePage = "job";
 $type = "job";
 
-$pageTitle = "Latest Government Jobs";
+
 
 $page = max(1, (int)($_GET['page'] ?? 1));
 
@@ -38,7 +38,17 @@ $posts = $response["posts"] ?? [];
 $categories = $response["categories"] ?? [];
 $pagination = $response["pagination"] ?? [];
 
-$page_title = $pageTitle;
+$page_title = "Latest Government Jobs | JobAdAssam";
+
+$meta_description =
+"Apply online for the latest Government Jobs in Assam and India. Find eligibility, salary, exam dates and official notifications.";
+
+$meta_keywords =
+"Government Jobs, Assam Jobs, Latest Jobs, Sarkari Naukri, Assam Recruitment";
+
+$canonical = BASE_URL."job";
+
+$og_image = BASE_URL."assets/image/jobs-banner.webp";
 
 include "../includes/header.php";
 include "../includes/navbar.php";

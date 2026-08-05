@@ -1,9 +1,7 @@
 <?php
 
 require_once "../includes/config.php";
-
-$pageTitle = "PDF Notes";
-
+$activePage = "pdf";
 $page = max(1, (int)($_GET['page'] ?? 1));
 
 $search = trim($_GET['search'] ?? '');
@@ -29,7 +27,15 @@ if (!$response || empty($response["success"])) {
 $pdfs = $response["pdfs"] ?? [];
 $pagination = $response["pagination"] ?? [];
 
-$page_title = $pageTitle;
+$page_title = "PDF Store | JobAdAssam";
+
+$meta_description = "Download premium and free PDF study materials for Assam Government Jobs, APSC, ADRE, TET, Police, SSC, Railway, Banking and other competitive exams.";
+
+$meta_keywords = "PDF Notes, Assam PDF, Study Material, Government Job PDF, APSC PDF, ADRE PDF, Assam GK PDF";
+
+$canonical = BASE_URL . "pdf";
+
+$og_image = BASE_URL . "assets/image/pdf-banner.webp";
 
 include "../includes/header.php";
 include "../includes/navbar.php";
