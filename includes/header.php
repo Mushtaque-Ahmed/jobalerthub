@@ -62,6 +62,8 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/search.css">
+
 
 </head>
 

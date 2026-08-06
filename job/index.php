@@ -52,6 +52,8 @@ $og_image = BASE_URL."assets/image/jobs-banner.webp";
 
 include "../includes/header.php";
 include "../includes/navbar.php";
-include "../includes/post-list-template.php";
-include "../includes/footer.php";
+include "../includes/post-list-template.php"; ?>
+
+<?php include "../includes/footer.php";
+
 ?>

@@ -183,7 +183,25 @@ $data["current_affairs"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ");
 
     $data["pdf_products"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    /* =====================================
+    breaking newas
+    =====================================*/
+    $stmt = $pdo->prepare("
+SELECT
+    title,
+    slug,
+    post_type
+FROM posts
+WHERE
+    status='published'
+    AND is_breaking=1
+ORDER BY created_at DESC
+LIMIT 10
+");
 
+$stmt->execute();
+
+$data["breakingNews"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
     /*
     =====================================
     CATEGORIES

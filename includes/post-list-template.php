@@ -6,11 +6,11 @@ $route = [
 
     "result" => "result",
 
-    "admit_card" => "admit-card",
+    "admit-card" => "admit-card",
 
-    "answer_key" => "answer-key",
+    "answer-key" => "answer-key",
 
-    "current_affairs" => "current-affair",
+    "current-affairs" => "current-affair",
 
     "category" => "job"
 
@@ -52,51 +52,28 @@ $detailUrl = $route[$type] ?? "job";
 
     </div>
     <!-- search  -->
-    <form method="GET" class="row g-3 mb-4">
+    <!-- Search -->
+    <div class="row mb-4">
 
-        <div class="col-lg-7">
+        <div class="col-lg-12">
 
-            <input type="text" name="search" class="form-control" placeholder="Search..."
-                value="<?= htmlspecialchars($search) ?>">
+            <div class="input-group">
 
-        </div>
+                <span class="input-group-text bg-white">
+                    <i class="bi bi-search"></i>
+                </span>
 
-        <div class="col-lg-3">
+                <input type="text" id="postSearch" class="form-control"
+                    placeholder="Search <?= htmlspecialchars($page_title) ?>..."
+                    value="<?= htmlspecialchars($search) ?>">
 
-            <select name="category" class="form-select">
-
-                <option value="0">
-
-                    All Categories
-
-                </option>
-
-                <?php foreach ($categories as $cat): ?>
-
-                <option value="<?= $cat["id"] ?>" <?= $category == $cat["id"] ? 'selected' : '' ?>>
-
-                    <?= $cat["name"] ?>
-
-                </option>
-
-                <?php endforeach; ?>
-
-            </select>
+            </div>
 
         </div>
 
-        <div class="col-lg-2">
 
-            <button class="btn btn-primary w-100">
-
-                Search
-
-            </button>
-
-        </div>
-
-    </form>
-    <div class="row">
+    </div>
+    <div class="row" id="postContainer">
 
         <?php foreach ($posts as $post): ?>
 
@@ -179,7 +156,7 @@ $detailUrl = $route[$type] ?? "job";
 
         ?>
 
-    <nav>
+    <nav id="paginationArea">
 
         <ul class="pagination justify-content-center">
 

@@ -89,11 +89,11 @@ if ($id <= 0) {
 
                                     ?>
 
-                                    <option value="<?= $row['id'] ?>">
+                                <option value="<?= $row['id'] ?>">
 
-                                        <?= htmlspecialchars($row['name']) ?>
+                                    <?= htmlspecialchars($row['name']) ?>
 
-                                    </option>
+                                </option>
 
                                 <?php } ?>
 
@@ -115,9 +115,9 @@ if ($id <= 0) {
 
                                 <option value="result">Result</option>
 
-                                <option value="admit_card">Admit Card</option>
+                                <option value="admit-card">Admit Card</option>
 
-                                <option value="answer_key">Answer Key</option>
+                                <option value="answer-key">Answer Key</option>
 
                                 <option value="article">Article</option>
 
@@ -333,7 +333,14 @@ if ($id <= 0) {
                     </div>
 
                 </div>
+                <!-- ==============breacking ============ -->
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="is_breaking" name="is_breaking" value="1">
 
+                    <label class="form-check-label" for="is_breaking">
+                        Show in Breaking News
+                    </label>
+                </div>
                 <!-- Publish -->
                 <div class="card shadow">
 
@@ -394,10 +401,9 @@ if ($id <= 0) {
 </div>
 
 <script>
-    const POST_ID = <?= $id ?>;
-
+const POST_ID = <?= $id ?>;
 </script>
 
- <script src="<?= BASE_URL ?>assets/js/post-edit.js"></script>
+<script src="<?= BASE_URL ?>assets/js/post-edit.js"></script>
 
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>

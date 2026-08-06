@@ -72,6 +72,8 @@ $seo_description = trim($_POST['seo_description'] ?? '');
 $seo_keywords = trim($_POST['seo_keywords'] ?? '');
 
 $status = trim($_POST['status'] ?? 'draft');
+$is_breaking = isset($_POST['is_breaking']) ? 1 : 0;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -260,13 +262,14 @@ apply_link,
 seo_title,
 seo_description,
 seo_keywords,
-status
+status,
+is_breaking
 
 )
 
 VALUES(
 
-?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
+?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
 
 )
 
@@ -296,7 +299,8 @@ $apply_link,
 $seo_title,
 $seo_description,
 $seo_keywords,
-$status
+$status,
+$is_breaking
 
 ]);
 

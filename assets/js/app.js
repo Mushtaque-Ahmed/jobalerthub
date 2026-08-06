@@ -63,35 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // ==========================
-    // Search
-    // ==========================
-
-    const searchBtn = document.getElementById("searchBtn");
-
-    if (searchBtn) {
-
-        searchBtn.addEventListener("click", function () {
-
-            const keyword = document.getElementById("searchInput").value;
-
-            if (keyword.trim() === "") {
-
-                alert("Please enter a keyword.");
-
-                return;
-
-            }
-
-            window.location.href =
-                "latest-jobs.html?search=" +
-                encodeURIComponent(keyword);
-
-        });
-
-    }
-
-
-    // ==========================
     // Counter Animation
     // ==========================
 

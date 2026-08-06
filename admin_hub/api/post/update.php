@@ -94,6 +94,7 @@ $seo_description = trim($_POST['seo_description'] ?? '');
 $seo_keywords = trim($_POST['seo_keywords'] ?? '');
 
 $status = $_POST['status'];
+$is_breaking = isset($_POST['is_breaking']) ? 1 : 0;
 
 $old_image = $_POST['old_image'] ?? '';
 
@@ -266,8 +267,8 @@ seo_title=?,
 seo_description=?,
 seo_keywords=?,
 
-status=?
-
+status=?,
+is_breaking=?
 WHERE id=?
 
 ";
@@ -304,7 +305,7 @@ $seo_description,
 $seo_keywords,
 
 $status,
-
+$is_breaking,
 $id
 
 ]);

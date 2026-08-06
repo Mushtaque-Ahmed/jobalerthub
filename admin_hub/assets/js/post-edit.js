@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.getElementById("status").value =
             p.status;
-
+        document.getElementById("is_breaking").checked = Number(p.is_breaking) === 1;
         // ===============================
         // Image
         // ===============================

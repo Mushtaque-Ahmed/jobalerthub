@@ -71,7 +71,7 @@ $latestResults = $data["latest_results"] ?? [];
 $latestAdmitCards = $data["latest_admit_cards"] ?? [];
 
 $currentAffairs = $data["current_affairs"] ?? [];
-
+$breakingNews = $data["breakingNews"] ?? [];
 /*
 |--------------------------------------------------------------------------
 | Header
@@ -111,29 +111,27 @@ HERO SECTION
                 </p>
 
                 <div class="row mt-4">
-                    <form action="<?= BASE_URL ?>search" method="GET" class="row mt-4">
 
-                        <div class="col-md-9">
+                    <div class="col-md-9">
 
-                            <div class="input-group">
+                        <div class="search-wrapper">
 
-                                <input type="text" name="q" class="form-control form-control-lg"
-                                    placeholder="Search Jobs, Results, Admit Cards, PDFs..."
-                                    value="<?= htmlspecialchars($_GET['q'] ?? '') ?>" required>
+                            <div class="search-box">
 
-                                <button class="btn btn-warning">
+                                <input type="text" id="homeSearch"
+                                    placeholder="Search Jobs, Results, Admit Cards, PDFs...">
 
-                                    <i class="bi bi-search"></i>
-
-                                    Search
-
+                                <button id="searchBtn">
+                                    🔍
                                 </button>
 
                             </div>
 
+                            <div id="searchResults" class="search-dropdown"></div>
+
                         </div>
 
-                    </form>
+                    </div>
 
                 </div>
 
@@ -184,9 +182,53 @@ BREAKING NEWS
 
     <div class="container">
 
-        <strong>Breaking:</strong>
+        <strong class="me-2">Breaking:</strong>
 
-        SSC CGL Notification Released • Railway NTPC Exam Date Announced • Assam Police Recruitment Started
+        <?php if (!empty($breakingNews)): ?>
+
+        <?php foreach ($breakingNews as $index => $news): ?>
+
+        <?php
+                    switch ($news['post_type']) {
+
+                        case 'job':
+                            $url = BASE_URL . 'job/' . $news['slug'];
+                            break;
+
+                        case 'result':
+                            $url = BASE_URL . 'result/' . $news['slug'];
+                            break;
+
+                        case 'admit_card':
+                            $url = BASE_URL . 'admit-card/' . $news['slug'];
+                            break;
+
+                        case 'current-affairs':
+                            $url = BASE_URL . 'current-affairs/' . $news['slug'];
+                            break;
+
+                        default:
+                            $url = '#';
+                    }
+                ?>
+
+        <a href="<?= $url ?>" class="text-white text-decoration-none fw-semibold">
+
+            <?= htmlspecialchars($news['title']) ?>
+
+        </a>
+
+        <?php if ($index != count($breakingNews)-1): ?>
+        <span class="mx-2">•</span>
+        <?php endif; ?>
+
+        <?php endforeach; ?>
+
+        <?php else: ?>
+
+        No Breaking News
+
+        <?php endif; ?>
 
     </div>
 
@@ -332,7 +374,7 @@ LATEST JOBS
 
                         <h5 class="fw-bold">
 
-                            <a href="<?= BASE_URL . $detailUrl ?><?= htmlspecialchars($job['slug']) ?>"
+                            <a href="<?= BASE_URL ?>job/<?= htmlspecialchars($job['slug']) ?>"
                                 class="text-dark text-decoration-none">
 
                                 <?= htmlspecialchars($job['title']) ?>
@@ -917,9 +959,7 @@ CURRENT AFFAIRS
     </div>
 
 </section>
-<script>
-const BASE_URL = "<?= BASE_URL ?>";
-</script>
+
 
 <script src="<?= BASE_URL ?>assets/js/home.js"></script>
 <script src="<?= BASE_URL ?>assets/js/newsletter.js"></script>

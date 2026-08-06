@@ -15,7 +15,7 @@ try {
             "message" => "Empty search."
         ]);
 
-        exit;
+        exit; 
     }
 
     $keyword = "%{$search}%";
@@ -93,7 +93,7 @@ try {
 
         WHERE
 
-            status='published'
+            status=1
 
         AND
 

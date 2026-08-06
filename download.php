@@ -29,7 +29,7 @@ $pdo->prepare("
     WHERE id = ?
 ")->execute([$pdf["id"]]);
 
-$file = __DIR__ . "/admin_hub/uploads/pdf/" . basename($pdf["pdf_file"]);
+$file = __DIR__ . "/admin_hub/uploads/pdfs/" . basename($pdf["pdf_file"]);
 
 if (!file_exists($file)) {
     http_response_code(404);

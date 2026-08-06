@@ -95,9 +95,9 @@ if (
 
                                 <option value="result">Result</option>
 
-                                <option value="admit_card">Admit Card</option>
+                                <option value="admit-card">Admit Card</option>
 
-                                <option value="answer_key">Answer Key</option>
+                                <option value="answer-key">Answer Key</option>
 
                                 <option value="article">Article</option>
 
@@ -382,6 +382,15 @@ if (
 
                 </div>
 
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="is_breaking" id="is_breaking" value="1">
+
+                        <label class="form-check-label" for="is_breaking">
+                            Show in Breaking News
+                        </label>
+                    </div>
+                </div>
                 <div class="card shadow">
 
                     <div class="card-header">
@@ -414,6 +423,7 @@ if (
 
                         </button>
 
+
                     </div>
 
                 </div>
@@ -428,5 +438,5 @@ if (
 
 
 
- <script src="<?=BASE_URL?>assets/js/post.js"></script>
+<script src="<?=BASE_URL?>assets/js/post.js"></script>
 <?php  require_once __DIR__ . '/../includes/footer.php';?>

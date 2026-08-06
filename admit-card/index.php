@@ -2,7 +2,7 @@
 
 require_once "../includes/config.php";
 $activePage = "admit-card";
-$type = "admit_card";
+$type = "admit-card";
 
 
 $page = max(1, (int)($_GET['page'] ?? 1));
@@ -53,4 +53,6 @@ $og_image = BASE_URL."assets/image/admit-card-banner.webp";
 include "../includes/header.php";
 include "../includes/navbar.php";
 include "../includes/post-list-template.php";
-include "../includes/footer.php";?>
+?>
+
+<?php include "../includes/footer.php";?>

@@ -20,7 +20,7 @@ try {
 
     $category = (int)($_GET['category'] ?? 0);
 
-    $limit = 1;
+    $limit = 12;
 
     $offset = ($page - 1) * $limit;
 
@@ -34,9 +34,9 @@ try {
 
         "job",
         "result",
-        "admit_card",
-        "answer_key",
-        "current_affairs"
+        "admit-card",
+        "answer-key",
+        "current-affairs"
 
     ];
 

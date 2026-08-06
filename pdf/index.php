@@ -67,20 +67,19 @@ include "../includes/navbar.php";
 
         <div class="input-group">
 
-            <input type="text" class="form-control" name="search" placeholder="Search PDF..."
-                value="<?= htmlspecialchars($search) ?>">
+            <span class="input-group-text bg-white">
+                <i class="bi bi-search"></i>
+            </span>
 
-            <button class="btn btn-primary">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search PDF...">
 
-                Search
 
-            </button>
 
         </div>
 
     </form>
 
-    <div class="row">
+    <div class="row" id="pdfContainer">
 
         <?php foreach($pdfs as $pdf): ?>
 
@@ -94,46 +93,24 @@ include "../includes/navbar.php";
                 <div class="card-body d-flex flex-column">
 
                     <h6 class="fw-bold">
-
                         <?= htmlspecialchars($pdf["title"]) ?>
-
                     </h6>
 
-                    <small class="text-muted">
+                    <small class="text-muted"><?= $pdf["pages"] ?> Pages</small>
 
-                        <?= $pdf["pages"] ?> Pages
+                    <small class="text-muted"><?= htmlspecialchars($pdf["language"]) ?></small>
 
-                    </small>
-
-                    <small class="text-muted">
-
-                        <?= htmlspecialchars($pdf["language"]) ?>
-
-                    </small>
-
-                    <small class="text-muted">
-
-                        <?= htmlspecialchars($pdf["author"]) ?>
-
-                    </small>
+                    <small class="text-muted"><?= htmlspecialchars($pdf["author"]) ?></small>
 
                     <div class="mt-2">
 
                         <?php if($pdf["is_free"]): ?>
 
-                        <span class="badge bg-success">
-
-                            FREE
-
-                        </span>
+                        <span class="badge bg-success">FREE</span>
 
                         <?php else: ?>
 
-                        <span class="badge bg-danger">
-
-                            ₹<?= $pdf["price"] ?>
-
-                        </span>
+                        <span class="badge bg-danger">₹<?= $pdf["price"] ?></span>
 
                         <?php endif; ?>
 
@@ -158,8 +135,9 @@ include "../includes/navbar.php";
         <?php endforeach; ?>
 
     </div>
+    <nav id="paginationArea">
 
-    <?php
+        <?php
 
     $current = $pagination["page"] ?? 1;
     $total = $pagination["total_pages"] ?? 1;
@@ -168,35 +146,38 @@ include "../includes/navbar.php";
 
     ?>
 
-    <nav>
+        <nav>
 
-        <ul class="pagination justify-content-center">
+            <ul class="pagination justify-content-center">
 
-            <?php for($i=1;$i<=$total;$i++): ?>
+                <?php for($i=1;$i<=$total;$i++): ?>
 
-            <li class="page-item <?= $current==$i?'active':'' ?>">
+                <li class="page-item <?= $current==$i?'active':'' ?>">
 
-                <a class="page-link"
-                    href="?page=<?= $i ?><?php if($search!=""): ?>&search=<?= urlencode($search) ?><?php endif; ?>">
+                    <a class="page-link"
+                        href="?page=<?= $i ?><?php if($search!=""): ?>&search=<?= urlencode($search) ?><?php endif; ?>">
 
-                    <?= $i ?>
+                        <?= $i ?>
 
-                </a>
+                    </a>
 
-            </li>
+                </li>
 
-            <?php endfor; ?>
+                <?php endfor; ?>
 
-        </ul>
+            </ul>
 
-    </nav>
+        </nav>
 
-    <?php endif; ?>
+        <?php endif; ?>
 
 </div>
+
 
 <?php
 
 include "../includes/footer.php";
 
 ?>
+
+<script src="<?= BASE_URL ?>assets/js/pdf.js"></script>
