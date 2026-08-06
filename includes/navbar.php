@@ -10,13 +10,13 @@ TOP BAR
         </div>
 
         <div>
-            <a href="<?= BASE_URL ?>login" class="text-white text-decoration-none me-3">
+            <!-- <a href="login" class="text-white text-decoration-none me-3">
                 Login
             </a>
 
-            <a href="<?= BASE_URL ?>register" class="text-white text-decoration-none">
+            <a href="register" class="text-white text-decoration-none">
                 Register
-            </a>
+            </a> -->
         </div>
 
     </div>
@@ -109,6 +109,18 @@ NAVBAR
                     <a class="nav-link <?= ($activePage=="pdf") ? "active fw-bold text-primary" : "" ?>"
                         href="<?= BASE_URL ?>pdf">
                         PDFs
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= BASE_URL ?>about"
+                        class="nav-link <?= ($activePage=="about") ? "active fw-bold text-primary" : "" ?>">
+                        About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= BASE_URL ?>contact"
+                        class="nav-link <?= ($activePage=="contact") ? "active fw-bold text-primary" : "" ?>">
+                        Contact us
                     </a>
                 </li>
 

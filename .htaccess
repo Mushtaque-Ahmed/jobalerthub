@@ -117,3 +117,16 @@ RewriteRule ^pdf/details\.php$ /jobalerthub/pdf/%1? [R=301,L]
 # Custom 404
 #########################################
 ErrorDocument 404 /jobalerthub/404.php
+# Contact
+RewriteRule ^contact/?$ contact/index.php [L,QSA]
+RewriteRule ^about/?$ about/index.php [L,QSA]
+# privacy , term& condition and disclaimer
+RewriteRule ^privacy-policy/?$ privacy-policy/index.php [L,QSA]
+
+RewriteRule ^terms-condition/?$ terms-condition/index.php [L,QSA]
+
+RewriteRule ^disclaimer/?$ disclaimer/index.php [L,QSA]
+RewriteRule ^refund-policy/?$ refund-policy/index.php [L,QSA]
+
+#site map
+RewriteRule ^sitemap\.xml$ sitemap.php [L]

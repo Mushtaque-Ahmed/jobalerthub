@@ -4,26 +4,24 @@
 
         <div class="row">
 
-            <div class="col-md-4">
+            <div class="col-md-3">
 
                 <h4>
 
-                    JobAlertHub
+                    JobAdAssam
 
                 </h4>
 
                 <p>
 
-                    Latest Jobs,
-                    Results,
-                    Admit Cards &
-                    Current Affairs.
+                    JobAdAssam provides latest job updates, education news, results,
+                    admit cards, and study materials.
 
                 </p>
 
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
 
                 <h5>
 
@@ -62,12 +60,66 @@
                         </a>
 
                     </li>
+                    <li>
+                        <a href="<?= BASE_URL ?>about">
+                            About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?= BASE_URL ?>contact">
+                            Contact Us
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+            <!-- Legal -->
+            <div class="col-lg-3">
+
+                <h5>Legal</h5>
+
+                <ul class="list-unstyled">
+
+                    <li>
+                        <a href="<?= BASE_URL ?>privacy-policy">
+                            Privacy Policy
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="<?= BASE_URL ?>terms-condition">
+                            Terms & Conditions
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="<?= BASE_URL ?>disclaimer">
+                            Disclaimer
+                        </a>
+                    </li>
+
+
+                    <!-- <li>
+                        <a href="refund-policy">
+                            Refund Policy
+                        </a>
+                    </li> -->
 
                 </ul>
 
             </div>
 
-            <div class="col-md-4">
+
+
+
+
+
+
+            <div class="col-lg-3">
 
                 <h5>Follow Us</h5>
 
