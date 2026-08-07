@@ -84,338 +84,340 @@ include "../includes/header.php";
 include "../includes/navbar.php";
 
 ?>
+<main>
+    <div class="container py-4">
 
-<div class="container py-4">
+        <div class="row">
 
-    <div class="row">
-
-        <!-- =======================================
+            <!-- =======================================
         LEFT SIDEBAR
         ======================================== -->
 
-        <aside class="col-lg-3">
+            <aside class="col-lg-3">
 
-            <!-- Advertisement -->
-            <div class="card shadow-sm mb-4">
+                <!-- Advertisement -->
+                <div class="card shadow-sm mb-4">
 
-                <div class="card-header fw-bold">
-                    Advertisement
-                </div>
+                    <div class="card-header fw-bold">
+                        Advertisement
+                    </div>
 
-                <div class="card-body text-center">
+                    <div class="card-body text-center">
 
-                    <div
-                        style="height:600px;background:#f8f9fa;border:1px dashed #ccc;display:flex;align-items:center;justify-content:center;">
+                        <div
+                            style="height:600px;background:#f8f9fa;border:1px dashed #ccc;display:flex;align-items:center;justify-content:center;">
 
-                        300 x 600 Ad
+                            300 x 600 Ad
+
+                        </div>
 
                     </div>
 
                 </div>
 
-            </div>
+                <!-- Latest Jobs -->
 
-            <!-- Latest Jobs -->
+                <div class="card shadow-sm mb-4">
 
-            <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-primary text-white">
 
-                <div class="card-header bg-primary text-white">
-
-                    Latest Jobs
-
-                </div>
-
-                <div class="list-group list-group-flush">
-
-                    <?php if (!empty($latestJobs)): ?>
-
-                    <?php foreach ($latestJobs as $item): ?>
-
-                    <a href="<?= BASE_URL ?>job/<?= urlencode($item['slug']) ?>"
-                        class="list-group-item list-group-item-action">
-
-                        <?= htmlspecialchars($item['title']) ?>
-
-                    </a>
-
-                    <?php endforeach; ?>
-
-                    <?php else: ?>
-
-                    <div class="list-group-item">
-
-                        No Jobs Found
+                        Latest Jobs
 
                     </div>
 
-                    <?php endif; ?>
+                    <div class="list-group list-group-flush">
 
-                </div>
+                        <?php if (!empty($latestJobs)): ?>
 
-            </div>
-            <!-- Categories -->
+                        <?php foreach ($latestJobs as $item): ?>
 
-            <div class="card shadow-sm mb-4">
+                        <a href="<?= BASE_URL ?>job/<?= urlencode($item['slug']) ?>"
+                            class="list-group-item list-group-item-action">
 
-                <div class="card-header bg-success text-white">
+                            <?= htmlspecialchars($item['title']) ?>
 
-                    Categories
+                        </a>
 
-                </div>
+                        <?php endforeach; ?>
 
-                <div class="list-group list-group-flush">
+                        <?php else: ?>
 
-                    <?php foreach ($categories as $category): ?>
+                        <div class="list-group-item">
 
-                    <a href="<?= BASE_URL . $category['slug'] ?>" class="list-group-item list-group-item-action">
+                            No Jobs Found
 
-                        <?= htmlspecialchars($category['name']) ?>
+                        </div>
 
-                    </a>
-
-                    <?php endforeach; ?>
-
-                </div>
-
-            </div>
-            <!-- result -->
-            <div class="card shadow-sm mb-4">
-
-                <div class="card-header bg-danger text-white">
-
-                    Latest Results
-
-                </div>
-
-                <div class="list-group list-group-flush">
-
-                    <?php if (!empty($latestResults)): ?>
-
-                    <?php foreach ($latestResults as $item): ?>
-
-                    <a href="<?= BASE_URL ?>result/<?= urlencode($item['slug']) ?>"
-                        class="list-group-item list-group-item-action">
-
-                        <?= htmlspecialchars($item['title']) ?>
-
-                    </a>
-
-                    <?php endforeach; ?>
-
-                    <?php else: ?>
-
-                    <div class="list-group-item">
-
-                        No Results Found
+                        <?php endif; ?>
 
                     </div>
 
-                    <?php endif; ?>
+                </div>
+                <!-- Categories -->
+
+                <div class="card shadow-sm mb-4">
+
+                    <div class="card-header bg-success text-white">
+
+                        Categories
+
+                    </div>
+
+                    <div class="list-group list-group-flush">
+
+                        <?php foreach ($categories as $category): ?>
+
+                        <a href="<?= BASE_URL . $category['slug'] ?>" class="list-group-item list-group-item-action">
+
+                            <?= htmlspecialchars($category['name']) ?>
+
+                        </a>
+
+                        <?php endforeach; ?>
+
+                    </div>
+
+                </div>
+                <!-- result -->
+                <div class="card shadow-sm mb-4">
+
+                    <div class="card-header bg-danger text-white">
+
+                        Latest Results
+
+                    </div>
+
+                    <div class="list-group list-group-flush">
+
+                        <?php if (!empty($latestResults)): ?>
+
+                        <?php foreach ($latestResults as $item): ?>
+
+                        <a href="<?= BASE_URL ?>result/<?= urlencode($item['slug']) ?>"
+                            class="list-group-item list-group-item-action">
+
+                            <?= htmlspecialchars($item['title']) ?>
+
+                        </a>
+
+                        <?php endforeach; ?>
+
+                        <?php else: ?>
+
+                        <div class="list-group-item">
+
+                            No Results Found
+
+                        </div>
+
+                        <?php endif; ?>
+
+                    </div>
 
                 </div>
 
-            </div>
-
-        </aside>
+            </aside>
 
 
 
-        <!-- =======================================
+            <!-- =======================================
         MAIN CONTENT
         ======================================== -->
 
-        <main class="col-lg-6">
+            <div class="col-lg-6">
 
-            <!-- Featured Image -->
+                <!-- Featured Image -->
 
-            <div class="card shadow-sm mb-4">
+                <div class="card shadow-sm mb-4">
 
-                <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($job["featured_image"]) ?>"
-                    class="card-img-top" alt="<?= htmlspecialchars($job["title"]) ?>">
+                    <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($job["featured_image"]) ?>"
+                        class="card-img-top" alt="<?= htmlspecialchars($job["title"]) ?>">
 
-                <div class="card-body">
+                    <div class="card-body">
 
-                    <span class="badge bg-primary">
+                        <span class="badge bg-primary">
 
-                        <?= htmlspecialchars($job["category_name"]) ?>
+                            <?= htmlspecialchars($job["category_name"]) ?>
 
-                    </span>
+                        </span>
 
-                    <h1 class="mt-3">
+                        <h1 class="mt-3">
 
-                        <?= htmlspecialchars($job["title"]) ?>
+                            <?= htmlspecialchars($job["title"]) ?>
 
-                    </h1>
+                        </h1>
 
-                    <p class="text-muted">
+                        <p class="text-muted">
 
-                        <?= htmlspecialchars($job["organization"]) ?>
+                            <?= htmlspecialchars($job["organization"]) ?>
 
-                    </p>
+                        </p>
 
-                </div>
-
-            </div>
-
-            <!-- Job Details -->
-
-            <div class="card shadow-sm mb-4">
-
-                <div class="card-header bg-primary text-white">
-
-                    Job Details
+                    </div>
 
                 </div>
 
-                <div class="card-body">
+                <!-- Job Details -->
 
-                    <table class="table table-bordered">
+                <div class="card shadow-sm mb-4">
 
-                        <tr>
-                            <th>Organization</th>
-                            <td><?= htmlspecialchars($job["organization"]) ?></td>
-                        </tr>
+                    <div class="card-header bg-primary text-white">
 
-                        <tr>
-                            <th>Qualification</th>
-                            <td><?= htmlspecialchars($job["qualification"]) ?></td>
-                        </tr>
+                        Job Details
 
-                        <tr>
-                            <th>Total Posts</th>
-                            <td><?= htmlspecialchars($job["total_posts"]) ?></td>
-                        </tr>
+                    </div>
 
-                        <tr>
-                            <th>Age Limit</th>
-                            <td><?= htmlspecialchars($job["age_limit"]) ?></td>
-                        </tr>
+                    <div class="card-body">
 
-                        <tr>
-                            <th>Salary</th>
-                            <td><?= htmlspecialchars($job["salary"]) ?></td>
-                        </tr>
+                        <table class="table table-bordered">
 
-                        <tr>
-                            <th>Application Fee</th>
-                            <td><?= htmlspecialchars($job["application_fee"]) ?></td>
-                        </tr>
+                            <tr>
+                                <th>Organization</th>
+                                <td><?= htmlspecialchars($job["organization"]) ?></td>
+                            </tr>
 
-                        <tr>
-                            <th>Apply Start</th>
-                            <td><?= $job["apply_start"] ?></td>
-                        </tr>
+                            <tr>
+                                <th>Qualification</th>
+                                <td><?= htmlspecialchars($job["qualification"]) ?></td>
+                            </tr>
 
-                        <tr>
-                            <th>Last Date</th>
-                            <td><?= $job["apply_last"] ?></td>
-                        </tr>
+                            <tr>
+                                <th>Total Posts</th>
+                                <td><?= htmlspecialchars($job["total_posts"]) ?></td>
+                            </tr>
 
-                    </table>
+                            <tr>
+                                <th>Age Limit</th>
+                                <td><?= htmlspecialchars($job["age_limit"]) ?></td>
+                            </tr>
 
-                </div>
+                            <tr>
+                                <th>Salary</th>
+                                <td><?= htmlspecialchars($job["salary"]) ?></td>
+                            </tr>
 
-            </div>
+                            <tr>
+                                <th>Application Fee</th>
+                                <td><?= htmlspecialchars($job["application_fee"]) ?></td>
+                            </tr>
 
-            <!-- Advertisement -->
+                            <tr>
+                                <th>Apply Start</th>
+                                <td><?= $job["apply_start"] ?></td>
+                            </tr>
 
-            <div class="text-center my-4">
+                            <tr>
+                                <th>Last Date</th>
+                                <td><?= $job["apply_last"] ?></td>
+                            </tr>
 
-                <div
-                    style="height:250px;background:#f8f9fa;border:1px dashed #ccc;display:flex;align-items:center;justify-content:center;">
+                        </table>
 
-                    728 x 90 Advertisement
-
-                </div>
-
-            </div>
-
-            <!-- Description -->
-
-            <div class="card shadow-sm mb-4">
-
-                <div class="card-header">
-
-                    Full Notification
+                    </div>
 
                 </div>
 
-                <div class="card-body">
+                <!-- Advertisement -->
 
-                    <?= $job["description"] ?>
+                <div class="text-center my-4">
 
-                </div>
+                    <div
+                        style="height:250px;background:#f8f9fa;border:1px dashed #ccc;display:flex;align-items:center;justify-content:center;">
 
-            </div>
+                        728 x 90 Advertisement
 
-            <!-- Related Jobs -->
-
-            <!-- =======================================
-RELATED JOBS
-======================================= -->
-
-            <div class="card shadow-sm mt-4">
-
-                <div class="card-header bg-primary text-white">
-
-                    Related Jobs
+                    </div>
 
                 </div>
 
-                <div class="card-body">
+                <!-- Description -->
 
-                    <?php if (!empty($relatedJobs)): ?>
+                <div class="card shadow-sm mb-4">
 
-                    <div class="row">
+                    <div class="card-header">
 
-                        <?php foreach ($relatedJobs as $item): ?>
+                        Full Notification
 
-                        <div class="col-md-6 mb-4">
+                    </div>
 
-                            <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
 
-                                <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($item["featured_image"]) ?>"
-                                    class="card-img-top" style="height:180px;object-fit:cover;"
-                                    alt="<?= htmlspecialchars($item["title"]) ?>">
+                        <?= $job["description"] ?>
 
-                                <div class="card-body d-flex flex-column">
+                    </div>
 
-                                    <span class="badge bg-primary mb-2">
+                </div>
 
-                                        <?= htmlspecialchars($item["category_name"]) ?>
+                <!-- Related Jobs -->
 
-                                    </span>
+                <!-- =======================================
+                      RELATED JOBS
+                  ======================================= -->
 
-                                    <h5 class="card-title">
+                <div class="card shadow-sm mt-4">
 
-                                        <?= htmlspecialchars($item["title"]) ?>
+                    <div class="card-header bg-primary text-white">
 
-                                    </h5>
+                        Related Jobs
 
-                                    <p class="text-muted small mb-2">
+                    </div>
 
-                                        <?= htmlspecialchars($item["organization"]) ?>
+                    <div class="card-body">
 
-                                    </p>
+                        <?php if (!empty($relatedJobs)): ?>
 
-                                    <p class="small mb-3">
+                        <div class="row">
 
-                                        <strong>Last Date:</strong>
+                            <?php foreach ($relatedJobs as $item): ?>
 
-                                        <?= !empty($item["apply_last"])
+                            <div class="col-md-6 mb-4">
+
+                                <div class="card h-100 border-0 shadow-sm">
+
+                                    <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($item["featured_image"]) ?>"
+                                        class="card-img-top" style="height:180px;object-fit:cover;"
+                                        alt="<?= htmlspecialchars($item["title"]) ?>">
+
+                                    <div class="card-body d-flex flex-column">
+
+                                        <span class="badge bg-primary mb-2">
+
+                                            <?= htmlspecialchars($item["category_name"]) ?>
+
+                                        </span>
+
+                                        <h5 class="card-title">
+
+                                            <?= htmlspecialchars($item["title"]) ?>
+
+                                        </h5>
+
+                                        <p class="text-muted small mb-2">
+
+                                            <?= htmlspecialchars($item["organization"]) ?>
+
+                                        </p>
+
+                                        <p class="small mb-3">
+
+                                            <strong>Last Date:</strong>
+
+                                            <?= !empty($item["apply_last"])
                                                     ? date("d M Y", strtotime($item["apply_last"]))
                                                     : "N/A"; ?>
 
-                                    </p>
+                                        </p>
 
-                                    <div class="mt-auto">
+                                        <div class="mt-auto">
 
-                                        <a href="<?= BASE_URL ?>job/<?= urlencode($item["slug"]) ?>"
-                                            class="btn btn-outline-primary w-100">
+                                            <a href="<?= BASE_URL ?>job/<?= urlencode($item["slug"]) ?>"
+                                                class="btn btn-outline-primary w-100">
 
-                                            Read Details
+                                                Read Details
 
-                                        </a>
+                                            </a>
+
+                                        </div>
 
                                     </div>
 
@@ -423,163 +425,162 @@ RELATED JOBS
 
                             </div>
 
+                            <?php endforeach; ?>
+
                         </div>
 
-                        <?php endforeach; ?>
+                        <?php else: ?>
+
+                        <div class="alert alert-light border">
+
+                            No related jobs available.
+
+                        </div>
+
+                        <?php endif; ?>
 
                     </div>
-
-                    <?php else: ?>
-
-                    <div class="alert alert-light border">
-
-                        No related jobs available.
-
-                    </div>
-
-                    <?php endif; ?>
 
                 </div>
 
             </div>
 
-        </main>
 
 
-
-        <!-- =======================================
+            <!-- =======================================
         RIGHT SIDEBAR
         ======================================== -->
 
-        <aside class="col-lg-3">
+            <aside class="col-lg-3">
 
-            <!-- Important Links -->
+                <!-- Important Links -->
 
-            <div class="card shadow-sm mb-4">
+                <div class="card shadow-sm mb-4">
 
-                <div class="card-header bg-success text-white">
+                    <div class="card-header bg-success text-white">
 
-                    Important Links
+                        Important Links
 
-                </div>
+                    </div>
 
-                <div class="card-body d-grid gap-2">
+                    <div class="card-body d-grid gap-2">
 
-                    <a href="<?= htmlspecialchars($job["apply_link"]) ?>" target="_blank" class="btn btn-success">
+                        <a href="<?= htmlspecialchars($job["apply_link"]) ?>" target="_blank" class="btn btn-success">
 
-                        Apply Online
+                            Apply Online
 
-                    </a>
+                        </a>
 
-                    <a href="<?= htmlspecialchars($job["official_website"]) ?>" target="_blank" class="btn btn-primary">
+                        <a href="<?= htmlspecialchars($job["official_website"]) ?>" target="_blank"
+                            class="btn btn-primary">
 
-                        Official Website
+                            Official Website
 
-                    </a>
-
-                </div>
-
-            </div>
-
-            <!-- Advertisement -->
-
-            <div class="card shadow-sm mb-4">
-
-                <div class="card-body text-center">
-
-                    <div
-                        style="height:600px;background:#f8f9fa;border:1px dashed #ccc;display:flex;align-items:center;justify-content:center;">
-
-                        300 x 600 Ad
+                        </a>
 
                     </div>
 
                 </div>
 
-            </div>
+                <!-- Advertisement -->
 
-            <!-- Premium PDFs -->
+                <div class="card shadow-sm mb-4">
 
-            <div class="card shadow-sm mb-4">
+                    <div class="card-body text-center">
 
-                <div class="card-header bg-info text-white">
+                        <div
+                            style="height:600px;background:#f8f9fa;border:1px dashed #ccc;display:flex;align-items:center;justify-content:center;">
 
-                    Premium Study Materials
+                            300 x 600 Ad
 
-                </div>
-
-                <div class="list-group list-group-flush">
-
-                    <?php if (!empty($latestPdf)): ?>
-
-                    <?php foreach ($latestPdf as $pdf): ?>
-
-                    <a href="<?= BASE_URL ?>pdf/<?= urlencode($pdf['slug']) ?>"
-                        class="list-group-item list-group-item-action">
-
-                        <?= htmlspecialchars($pdf['title']) ?>
-
-                    </a>
-
-                    <?php endforeach; ?>
-
-                    <?php else: ?>
-
-                    <div class="list-group-item">
-
-                        No PDFs Available
+                        </div>
 
                     </div>
 
-                    <?php endif; ?>
-
                 </div>
 
-            </div>
-            <!-- latest admit card  -->
-            <div class="card shadow-sm mb-4">
+                <!-- Premium PDFs -->
 
-                <div class="card-header bg-warning">
+                <div class="card shadow-sm mb-4">
 
-                    Latest Admit Cards
+                    <div class="card-header bg-info text-white">
 
-                </div>
-
-                <div class="list-group list-group-flush">
-
-                    <?php if (!empty($latestAdmitCards)): ?>
-
-                    <?php foreach ($latestAdmitCards as $item): ?>
-
-                    <a href="<?= BASE_URL ?>admit-card/<?= urlencode($item['slug']) ?>"
-                        class="list-group-item list-group-item-action">
-
-                        <?= htmlspecialchars($item['title']) ?>
-
-                    </a>
-
-                    <?php endforeach; ?>
-
-                    <?php else: ?>
-
-                    <div class="list-group-item">
-
-                        No Admit Cards
+                        Premium Study Materials
 
                     </div>
 
-                    <?php endif; ?>
+                    <div class="list-group list-group-flush">
+
+                        <?php if (!empty($latestPdf)): ?>
+
+                        <?php foreach ($latestPdf as $pdf): ?>
+
+                        <a href="<?= BASE_URL ?>pdf/<?= urlencode($pdf['slug']) ?>"
+                            class="list-group-item list-group-item-action">
+
+                            <?= htmlspecialchars($pdf['title']) ?>
+
+                        </a>
+
+                        <?php endforeach; ?>
+
+                        <?php else: ?>
+
+                        <div class="list-group-item">
+
+                            No PDFs Available
+
+                        </div>
+
+                        <?php endif; ?>
+
+                    </div>
+
+                </div>
+                <!-- latest admit card  -->
+                <div class="card shadow-sm mb-4">
+
+                    <div class="card-header bg-warning">
+
+                        Latest Admit Cards
+
+                    </div>
+
+                    <div class="list-group list-group-flush">
+
+                        <?php if (!empty($latestAdmitCards)): ?>
+
+                        <?php foreach ($latestAdmitCards as $item): ?>
+
+                        <a href="<?= BASE_URL ?>admit-card/<?= urlencode($item['slug']) ?>"
+                            class="list-group-item list-group-item-action">
+
+                            <?= htmlspecialchars($item['title']) ?>
+
+                        </a>
+
+                        <?php endforeach; ?>
+
+                        <?php else: ?>
+
+                        <div class="list-group-item">
+
+                            No Admit Cards
+
+                        </div>
+
+                        <?php endif; ?>
+
+                    </div>
 
                 </div>
 
-            </div>
+            </aside>
 
-        </aside>
+        </div>
 
     </div>
-
-</div>
-
+</main>
 <?php
 
 include "../includes/footer.php";

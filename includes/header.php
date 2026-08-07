@@ -54,15 +54,38 @@
     <meta name="theme-color" content="#0d6efd">
     <meta name="msapplication-TileColor" content="#0d6efd">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="preload" href="<?= BASE_URL ?>assets/css/bootstrap.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <!-- google fonts start -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/search.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'">
+
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    </noscript>
+    <!-- google fonts end -->
+    <link rel="preload" href="<?= BASE_URL ?>assets/css/style.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+
+    <link rel="preload" href="<?= BASE_URL ?>assets/css/search.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+
+    <noscript>
+        <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
+        <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/search.css">
+    </noscript>
 
 
 </head>

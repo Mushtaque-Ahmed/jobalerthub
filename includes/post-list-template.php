@@ -18,121 +18,124 @@ $route = [
 
 $detailUrl = $route[$type] ?? "job";
 ?>
-<div class="container py-4">
+<main>
+    <div class="container py-4">
 
-    <nav>
+        <nav>
 
-        <ol class="breadcrumb">
+            <ol class="breadcrumb">
 
-            <li class="breadcrumb-item">
+                <li class="breadcrumb-item">
 
-                <a href="<?= BASE_URL ?>">
+                    <a href="<?= BASE_URL ?>">
 
-                    Home
+                        Home
 
-                </a>
+                    </a>
 
-            </li>
+                </li>
 
-            <li class="breadcrumb-item active">
+                <li class="breadcrumb-item active">
 
+                    <?= $page_title ?>
+
+                </li>
+
+            </ol>
+
+        </nav>
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h1>
                 <?= $page_title ?>
+            </h1>
 
-            </li>
+        </div>
+        <!-- search  -->
+        <!-- Search -->
+        <div class="row mb-4">
 
-        </ol>
+            <div class="col-lg-12">
 
-    </nav>
+                <div class="input-group">
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
+                    <span class="input-group-text bg-white">
+                        <i class="bi bi-search"></i>
+                    </span>
 
-        <h1>
-            <?= $page_title ?>
-        </h1>
+                    <input type="text" id="postSearch" class="form-control"
+                        placeholder="Search <?= htmlspecialchars($page_title) ?>..."
+                        value="<?= htmlspecialchars($search) ?>">
 
-    </div>
-    <!-- search  -->
-    <!-- Search -->
-    <div class="row mb-4">
-
-        <div class="col-lg-12">
-
-            <div class="input-group">
-
-                <span class="input-group-text bg-white">
-                    <i class="bi bi-search"></i>
-                </span>
-
-                <input type="text" id="postSearch" class="form-control"
-                    placeholder="Search <?= htmlspecialchars($page_title) ?>..."
-                    value="<?= htmlspecialchars($search) ?>">
+                </div>
 
             </div>
 
+
         </div>
+        <div class="row" id="postContainer">
 
+            <?php foreach ($posts as $post): ?>
 
-    </div>
-    <div class="row" id="postContainer">
+            <div class="col-lg-4 mb-4">
 
-        <?php foreach ($posts as $post): ?>
+                <div class="card shadow-sm h-100">
 
-        <div class="col-lg-4 mb-4">
+                    <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($post["featured_image"]) ?>"
+                        class="card-img-top">
 
-            <div class="card shadow-sm h-100">
+                    <div class="card-body d-flex flex-column">
 
-                <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($post["featured_image"]) ?>"
-                    class="card-img-top">
+                        <h5>
 
-                <div class="card-body d-flex flex-column">
+                            <?= htmlspecialchars($post["title"]) ?>
 
-                    <h5>
+                        </h5>
 
-                        <?= htmlspecialchars($post["title"]) ?>
+                        <p>
 
-                    </h5>
+                            <strong>Organization:</strong>
 
-                    <p>
+                            <?= htmlspecialchars($post["organization"]) ?>
 
-                        <strong>Organization:</strong>
+                        </p>
 
-                        <?= htmlspecialchars($post["organization"]) ?>
+                        <p>
 
-                    </p>
+                            <strong>Qualification:</strong>
 
-                    <p>
+                            <?= htmlspecialchars($post["qualification"]) ?>
 
-                        <strong>Qualification:</strong>
+                        </p>
 
-                        <?= htmlspecialchars($post["qualification"]) ?>
+                        <p>
 
-                    </p>
+                            <strong>Vacancy:</strong>
 
-                    <p>
+                            <?= htmlspecialchars($post["total_posts"]) ?>
 
-                        <strong>Vacancy:</strong>
+                        </p>
 
-                        <?= htmlspecialchars($post["total_posts"]) ?>
+                        <p>
 
-                    </p>
+                            <strong>Last Date:</strong>
 
-                    <p>
-
-                        <strong>Last Date:</strong>
-
-                        <?= !empty($post["apply_last"])
+                            <?= !empty($post["apply_last"])
                                 ? date("d M Y", strtotime($post["apply_last"]))
                                 : "N/A" ?>
 
-                    </p>
+                        </p>
 
-                    <div class="mt-auto">
+                        <div class="mt-auto">
 
-                        <a href="<?= BASE_URL ?>job/<?= urlencode($post["slug"]) ?>" class="btn btn-primary w-100">
+                            <a href="<?= BASE_URL ?>job/<?= urlencode($post["slug"]) ?>" class="btn btn-primary w-100">
 
-                            Read Details
+                                Read Details
 
-                        </a>
+                            </a>
+
+                        </div>
 
                     </div>
 
@@ -140,13 +143,11 @@ $detailUrl = $route[$type] ?? "job";
 
             </div>
 
+            <?php endforeach; ?>
+
         </div>
-
-        <?php endforeach; ?>
-
-    </div>
-    <!-- paginations  -->
-    <?php
+        <!-- paginations  -->
+        <?php
 
     $current = $pagination["page"];
 
@@ -156,15 +157,15 @@ $detailUrl = $route[$type] ?? "job";
 
         ?>
 
-    <nav id="paginationArea">
+        <nav id="paginationArea">
 
-        <ul class="pagination justify-content-center">
+            <ul class="pagination justify-content-center">
 
-            <?php for ($i = 1; $i <= $total; $i++): ?>
+                <?php for ($i = 1; $i <= $total; $i++): ?>
 
-            <li class="page-item <?= $current == $i ? 'active' : '' ?>">
+                <li class="page-item <?= $current == $i ? 'active' : '' ?>">
 
-                <a class="page-link" href="?page=<?= $i ?>
+                    <a class="page-link" href="?page=<?= $i ?>
 
                                 <?php if ($search != ""): ?>
 
@@ -178,18 +179,19 @@ $detailUrl = $route[$type] ?? "job";
 
                                    <?php endif; ?>">
 
-                    <?= $i ?>
+                        <?= $i ?>
 
-                </a>
+                    </a>
 
-            </li>
+                </li>
 
-            <?php endfor; ?>
+                <?php endfor; ?>
 
-        </ul>
+            </ul>
 
-    </nav>
+        </nav>
 
-    <?php endif; ?>
+        <?php endif; ?>
 
-</div>
+    </div>
+</main>

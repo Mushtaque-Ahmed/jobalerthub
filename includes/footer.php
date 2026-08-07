@@ -33,7 +33,7 @@
 
                     <li>
 
-                        <a href="<?= BASE_URL ?>">
+                        <a href="<?= BASE_URL ?>" class="text-decoration-none">
 
                             Home
 
@@ -43,7 +43,7 @@
 
                     <li>
 
-                        <a href="<?= BASE_URL ?>job">
+                        <a href="<?= BASE_URL ?>job" class="text-decoration-none">
 
                             Jobs
 
@@ -53,7 +53,7 @@
 
                     <li>
 
-                        <a href="<?= BASE_URL ?>result">
+                        <a href="<?= BASE_URL ?>result" class="text-decoration-none">
 
                             Results
 
@@ -61,13 +61,13 @@
 
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>about">
+                        <a href="<?= BASE_URL ?>about" class="text-decoration-none">
                             About Us
                         </a>
                     </li>
 
                     <li>
-                        <a href="<?= BASE_URL ?>contact">
+                        <a href="<?= BASE_URL ?>contact" class="text-decoration-none">
                             Contact Us
                         </a>
                     </li>
@@ -83,21 +83,21 @@
                 <ul class="list-unstyled">
 
                     <li>
-                        <a href="<?= BASE_URL ?>privacy-policy">
+                        <a href="<?= BASE_URL ?>privacy-policy" class="text-decoration-none">
                             Privacy Policy
                         </a>
                     </li>
 
 
                     <li>
-                        <a href="<?= BASE_URL ?>terms-condition">
+                        <a href="<?= BASE_URL ?>terms-condition" class="text-decoration-none">
                             Terms & Conditions
                         </a>
                     </li>
 
 
                     <li>
-                        <a href="<?= BASE_URL ?>disclaimer">
+                        <a href="<?= BASE_URL ?>disclaimer" class="text-decoration-none">
                             Disclaimer
                         </a>
                     </li>
@@ -181,7 +181,8 @@
 
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="<?= BASE_URL ?>assets/js/bootstrap.bundle.min.js"></script>
 <script>
 const BASE_URL = "<?= BASE_URL ?>";
 </script>

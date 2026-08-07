@@ -66,170 +66,172 @@ $og_type = "article";
 include "../includes/header.php";
 include "../includes/navbar.php";
 ?>
+<main>
+    <div class="container py-4">
 
-<div class="container py-4">
+        <div class="row">
 
-    <div class="row">
+            <!-- LEFT CONTENT -->
 
-        <!-- LEFT CONTENT -->
+            <div class="col-lg-8">
 
-        <div class="col-lg-8">
+                <div class="card shadow-sm mb-4">
 
-            <div class="card shadow-sm mb-4">
+                    <img src="<?= BASE_URL ?>admin_hub/uploads/pdf-images/<?= htmlspecialchars($pdf["featured_image"]) ?>"
+                        class="card-img-top" style="max-height:450px;object-fit:contain;">
 
-                <img src="<?= BASE_URL ?>admin_hub/uploads/pdf-images/<?= htmlspecialchars($pdf["featured_image"]) ?>"
-                    class="card-img-top" style="max-height:450px;object-fit:contain;">
+                    <div class="card-body">
 
-                <div class="card-body">
+                        <h1 class="h3 mb-3">
 
-                    <h1 class="h3 mb-3">
+                            <?= htmlspecialchars($pdf["title"]) ?>
 
-                        <?= htmlspecialchars($pdf["title"]) ?>
+                        </h1>
 
-                    </h1>
+                        <div class="row mb-3">
 
-                    <div class="row mb-3">
+                            <div class="col-md-6">
 
-                        <div class="col-md-6">
+                                <p><strong>Author:</strong> <?= htmlspecialchars($pdf["author"]) ?></p>
 
-                            <p><strong>Author:</strong> <?= htmlspecialchars($pdf["author"]) ?></p>
+                                <p><strong>Pages:</strong> <?= $pdf["pages"] ?></p>
 
-                            <p><strong>Pages:</strong> <?= $pdf["pages"] ?></p>
+                                <p><strong>Language:</strong> <?= htmlspecialchars($pdf["language"]) ?></p>
 
-                            <p><strong>Language:</strong> <?= htmlspecialchars($pdf["language"]) ?></p>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <p><strong>File Size:</strong> <?= htmlspecialchars($pdf["file_size"]) ?></p>
+
+                                <p><strong>Downloads:</strong> <?= (int) $pdf["downloads"] ?></p>
+
+                                <p>
+
+                                    <strong>Price:</strong>
+
+                                    <?php if ($pdf["is_free"]): ?>
+
+                                    <span class="badge bg-success">
+
+                                        FREE
+
+                                    </span>
+
+                                    <?php else: ?>
+
+                                    ₹<?= number_format($pdf["price"], 2) ?>
+
+                                    <?php endif; ?>
+
+                                </p>
+
+                            </div>
 
                         </div>
 
-                        <div class="col-md-6">
+                        <hr>
 
-                            <p><strong>File Size:</strong> <?= htmlspecialchars($pdf["file_size"]) ?></p>
+                        <?= $pdf["description"] ?>
 
-                            <p><strong>Downloads:</strong> <?= (int) $pdf["downloads"] ?></p>
+                        <hr>
 
-                            <p>
+                        <?php if ($pdf["is_free"]): ?>
 
-                                <strong>Price:</strong>
+                        <a href="<?= BASE_URL ?>download.php?slug=<?= urlencode($pdf["slug"]) ?>"
+                            class="btn btn-success btn-lg">
 
-                                <?php if ($pdf["is_free"]): ?>
+                            <i class="bi bi-download"></i> Download PDF
 
-                                <span class="badge bg-success">
+                        </a>
 
-                                    FREE
+                        <?php else: ?>
 
-                                </span>
+                        <a href="#" class="btn btn-primary btn-lg">
 
-                                <?php else: ?>
+                            Buy Now
 
-                                ₹<?= number_format($pdf["price"], 2) ?>
+                        </a>
 
-                                <?php endif; ?>
-
-                            </p>
-
-                        </div>
+                        <?php endif; ?>
 
                     </div>
 
-                    <hr>
+                </div>
 
-                    <?= $pdf["description"] ?>
+                <!-- Related PDF -->
 
-                    <hr>
+                <div class="card shadow-sm">
 
-                    <?php if ($pdf["is_free"]): ?>
+                    <div class="card-header">
 
-                    <a href="<?= BASE_URL ?>download.php?slug=<?= urlencode($pdf["slug"]) ?>"
-                        class="btn btn-success btn-lg">
+                        <h4 class="mb-0">
 
-                        <i class="bi bi-download"></i> Download PDF
+                            Related PDFs
 
-                    </a>
+                        </h4>
 
-                    <?php else: ?>
+                    </div>
 
-                    <a href="#" class="btn btn-primary btn-lg">
+                    <div class="list-group list-group-flush">
 
-                        Buy Now
+                        <?php foreach ($relatedPdf as $item): ?>
 
-                    </a>
+                        <a href="<?= BASE_URL ?>pdf/<?= urlencode($item["slug"]) ?>"
+                            class="list-group-item list-group-item-action">
 
-                    <?php endif; ?>
+                            <?= htmlspecialchars($item["title"]) ?>
+
+                        </a>
+
+                        <?php endforeach; ?>
+
+                    </div>
 
                 </div>
 
             </div>
 
-            <!-- Related PDF -->
+            <!-- SIDEBAR -->
 
-            <div class="card shadow-sm">
+            <div class="col-lg-4">
 
-                <div class="card-header">
+                <div class="card shadow-sm mb-4">
 
-                    <h4 class="mb-0">
+                    <div class="card-header">
 
-                        Related PDFs
+                        <h5 class="mb-0">
 
-                    </h4>
+                            Latest PDFs
 
-                </div>
+                        </h5>
 
-                <div class="list-group list-group-flush">
+                    </div>
 
-                    <?php foreach ($relatedPdf as $item): ?>
+                    <div class="list-group list-group-flush">
 
-                    <a href="<?= BASE_URL ?>pdf/<?= urlencode($item["slug"]) ?>"
-                        class="list-group-item list-group-item-action">
+                        <?php foreach ($latestPdf as $item): ?>
 
-                        <?= htmlspecialchars($item["title"]) ?>
+                        <a href="<?= BASE_URL ?>pdf/<?= urlencode($item["slug"]) ?>"
+                            class="list-group-item list-group-item-action">
 
-                    </a>
+                            <?= htmlspecialchars($item["title"]) ?>
 
-                    <?php endforeach; ?>
+                        </a>
 
-                </div>
+                        <?php endforeach; ?>
 
-            </div>
-
-        </div>
-
-        <!-- SIDEBAR -->
-
-        <div class="col-lg-4">
-
-            <div class="card shadow-sm mb-4">
-
-                <div class="card-header">
-
-                    <h5 class="mb-0">
-
-                        Latest PDFs
-
-                    </h5>
+                    </div>
 
                 </div>
 
-                <div class="list-group list-group-flush">
+                <div class="card shadow-sm">
 
-                    <?php foreach ($latestPdf as $item): ?>
+                    <div class="card-body text-center">
 
-                    <a href="<?= BASE_URL ?>pdf/<?= urlencode($item["slug"]) ?>"
-                        class="list-group-item list-group-item-action">
+                        Advertisement
 
-                        <?= htmlspecialchars($item["title"]) ?>
-
-                    </a>
-
-                    <?php endforeach; ?>
-
-                </div>
-
-            </div>
-
-            <div class="card shadow-sm">
-
-                <div class="card-body text-center">
-
-                    Advertisement
+                    </div>
 
                 </div>
 
@@ -238,9 +240,7 @@ include "../includes/navbar.php";
         </div>
 
     </div>
-
-</div>
-
+</main>
 <?php
 
 include "../includes/footer.php";
