@@ -73,6 +73,10 @@ $currentFolder = basename(dirname($_SERVER['PHP_SELF']));
                                 href="#">
                                 Edit PDF
                             </a>
+                            <a class="nav-link <?= ($currentPage == 'category.php' && $currentFolder == 'pdf') ? 'active' : '' ?>"
+                                href="<?= BASE_URL ?>pdf/category.php">
+                                Category
+                            </a>
                         </nav>
                     </div>
                     <a class="nav-link collapsed <?= ($currentFolder == 'settings') ? 'active' : '' ?>" href="#"

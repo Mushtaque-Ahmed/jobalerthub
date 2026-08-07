@@ -28,12 +28,12 @@ NAVBAR
 ======================= -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
 
-        <div class="container">
+        <div class="container-fluid">
 
             <a href="<?= BASE_URL ?>" class="navbar-brand">
                 <img src="<?= BASE_URL ?>admin_hub/uploads/settings/logo.webp"
-                    alt="<?= htmlspecialchars($settings['site_name']) ?>" class="img-fluid navbar-logo me-2" width="45"
-                    height="45">
+                    alt="<?= htmlspecialchars($settings['site_name']) ?>" class="img-fluid navbar-logo me-2" width="182"
+                    height="60">
             </a>
 
             <style>
@@ -64,71 +64,80 @@ NAVBAR
             </button>
 
             <div class="collapse navbar-collapse" id="menu">
+                <div class="d-lg-flex align-items-lg-center ms-auto w-100 justify-content-end">
 
-                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <!-- Search -->
+                    <div class="navbar-search me-lg-3 mb-3 mb-lg-0">
 
-                    <li class="nav-item">
-                        <a class="nav-link <?= ($activePage==BASE_URL) ? "active fw-bold text-primary" : "" ?>"
-                            href="<?= BASE_URL ?>">
-                            Home
-                        </a>
-                    </li>
+                        <div class="search-box">
 
-                    <li class="nav-item">
+                            <input type="text" id="homeSearch" placeholder="Search Jobs, Results, PDFs...">
 
-                        <a class="nav-link <?= ($activePage=="job") ? "active fw-bold text-primary" : "" ?>"
-                            href="<?= BASE_URL ?>job/">
-                            Jobs
-                        </a>
-                    </li>
+                            <button type="button" id="searchBtn">
+                                <i class="bi bi-search"></i>
+                            </button>
 
-                    <li class="nav-item">
-                        <a class="nav-link <?= ($activePage=="result") ? "active fw-bold text-primary" : "" ?>"
-                            href="<?= BASE_URL ?>result">
-                            Results
-                        </a>
-                    </li>
+                        </div>
 
-                    <li class="nav-item">
-                        <a class="nav-link <?= ($activePage=="admit-card") ? "active fw-bold text-primary" : "" ?>"
-                            href="<?= BASE_URL ?>admit-card">
-                            Admit Card
-                        </a>
-                    </li>
+                        <div id="searchResults" class="search-dropdown"></div>
 
-                    <!-- <li class="nav-item">
-                    <a href="<?= BASE_URL ?>answer-key" class="nav-link">
-                        Answer Keys
-                    </a>
-                </li> -->
+                    </div>
 
-                    <!-- <li class="nav-item">
-                    <a href="<?= BASE_URL ?>current-affair" class="nav-link">
-                        Current Affairs
-                    </a>
-                </li> -->
+                    <!-- Menu -->
+                    <ul class="navbar-nav align-items-lg-center">
 
-                    <li class="nav-item">
-                        <a class="nav-link <?= ($activePage=="pdf") ? "active fw-bold text-primary" : "" ?>"
-                            href="<?= BASE_URL ?>pdf">
-                            PDFs
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?= BASE_URL ?>about"
-                            class="nav-link <?= ($activePage=="about") ? "active fw-bold text-primary" : "" ?>">
-                            About
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?= BASE_URL ?>contact"
-                            class="nav-link <?= ($activePage=="contact") ? "active fw-bold text-primary" : "" ?>">
-                            Contact us
-                        </a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?= ($activePage==BASE_URL) ? "active fw-bold text-primary" : "" ?>"
+                                href="<?= BASE_URL ?>">
+                                Home
+                            </a>
+                        </li>
 
-                </ul>
+                        <li class="nav-item">
+                            <a class="nav-link <?= ($activePage=="job") ? "active fw-bold text-primary" : "" ?>"
+                                href="<?= BASE_URL ?>job/">
+                                Jobs
+                            </a>
+                        </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link <?= ($activePage=="result") ? "active fw-bold text-primary" : "" ?>"
+                                href="<?= BASE_URL ?>result">
+                                Results
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link <?= ($activePage=="admit-card") ? "active fw-bold text-primary" : "" ?>"
+                                href="<?= BASE_URL ?>admit-card">
+                                Admit Card
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link <?= ($activePage=="pdf") ? "active fw-bold text-primary" : "" ?>"
+                                href="<?= BASE_URL ?>pdf">
+                                PDFs
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="<?= BASE_URL ?>about"
+                                class="nav-link <?= ($activePage=="about") ? "active fw-bold text-primary" : "" ?>">
+                                About
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="<?= BASE_URL ?>contact"
+                                class="nav-link <?= ($activePage=="contact") ? "active fw-bold text-primary" : "" ?>">
+                                Contact Us
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
             </div>
 
         </div>

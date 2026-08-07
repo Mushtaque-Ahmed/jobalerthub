@@ -129,7 +129,7 @@ SELECT
 FROM posts p
 WHERE
     p.status='published'
-    AND p.post_type='admit_card'
+    AND p.post_type='admit-card'
 ORDER BY p.id DESC
 LIMIT 8
 ");

@@ -110,30 +110,6 @@ HERO SECTION
 
                     </p>
 
-                    <div class="row mt-4">
-
-                        <div class="col-md-9">
-
-                            <div class="search-wrapper">
-
-                                <div class="search-box">
-
-                                    <input type="text" id="homeSearch"
-                                        placeholder="Search Jobs, Results, Admit Cards, PDFs...">
-
-                                    <button id="searchBtn">
-                                        🔍
-                                    </button>
-
-                                </div>
-
-                                <div id="searchResults" class="search-dropdown"></div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
 
                     <div class="row mt-5">
 
@@ -164,8 +140,8 @@ HERO SECTION
 
                 <div class="col-lg-5 text-center">
 
-                    <img src="<?= BASE_URL ?>assets/image/text.png" class="img-fluid" width="600" height="300"
-                        alt="Government Jobs">
+                    <img src="<?= BASE_URL ?>assets/image/jobadassam-hero-banner.webp" class="img-fluid" width="600"
+                        height="350" alt="Government Jobs">
 
                 </div>
 
@@ -351,7 +327,8 @@ LATEST JOBS
 
                     <div class="card border-0 shadow-sm rounded-4 h-100">
 
-                        <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($job['featured_image']) ?>"
+                        <img width="400" height="220"
+                            src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($job['featured_image']) ?>"
                             class="card-img-top" alt="<?= htmlspecialchars($job['title']) ?>"
                             style="height:220px; object-fit:cover;">
 
@@ -522,7 +499,8 @@ LATEST JOBS
 
                     <div class="card border-0 shadow-sm h-100">
 
-                        <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($card['featured_image']) ?>"
+                        <img width="390" height="260" loading="lazy"
+                            src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($card['featured_image']) ?>"
                             class="card-img-top" alt="<?= htmlspecialchars($card['title']) ?>"
                             style="height:180px;object-fit:cover;">
 
@@ -604,7 +582,8 @@ CURRENT AFFAIRS
 
                 </div>
 
-                <a href="#" class="btn btn-outline-primary">
+                <a href="<?= BASE_URL ?>current-affairs/<?= htmlspecialchars($news['slug']) ?>"
+                    class="btn btn-outline-primary">
 
                     View All
 
@@ -622,7 +601,8 @@ CURRENT AFFAIRS
 
                     <div class="card border-0 shadow-sm h-100">
 
-                        <img src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($news['featured_image']) ?>"
+                        <img width="390" height="260" loading="lazy"
+                            src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($news['featured_image']) ?>"
                             class="card-img-top" alt="<?= htmlspecialchars($news['title']) ?>"
                             style="height:220px;object-fit:cover;">
 
@@ -840,7 +820,8 @@ CURRENT AFFAIRS
 
                     <div class="card border-0 shadow-sm h-100">
 
-                        <img src="<?= BASE_URL ?>admin_hub/uploads/pdf-images/<?= htmlspecialchars($pdf['featured_image']) ?>"
+                        <img width="390" height="260" loading="lazy"
+                            src="<?= BASE_URL ?>admin_hub/uploads/pdf-images/<?= htmlspecialchars($pdf['featured_image']) ?>"
                             class="card-img-top" alt="<?= htmlspecialchars($pdf['title']) ?>"
                             style="height:260px;object-fit:cover;">
 
@@ -962,9 +943,9 @@ CURRENT AFFAIRS
     </section>
 
 </main>
-<script src="<?= BASE_URL ?>assets/js/home.js"></script>
+
 <script src="<?= BASE_URL ?>assets/js/newsletter.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 <?php
 
 include "includes/footer.php";

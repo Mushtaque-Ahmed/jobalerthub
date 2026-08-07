@@ -1,5 +1,7 @@
 User-agent: *
-
 Allow: /
+
+# Block admin panel
+Disallow: /admin_hub/
 
 Sitemap: https://jobadassam.com/sitemap.xml

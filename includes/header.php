@@ -59,7 +59,13 @@
         onload="this.onload=null;this.rel='stylesheet'">
 
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- bootstrao icons  -->
+    <link rel="preload" href="<?= BASE_URL ?>assets/css/bootstrap-icons.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+
+    <noscript>
+        <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/bootstrap-icons.min.css">
+    </noscript>
 
     <!-- google fonts start -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

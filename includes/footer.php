@@ -188,7 +188,7 @@ const BASE_URL = "<?= BASE_URL ?>";
 </script>
 <script src="<?= BASE_URL ?>assets/js/post-search.js"></script>
 <script src="<?= BASE_URL ?>assets/js/app.js"></script>
-
+<script src="<?= BASE_URL ?>assets/js/home.js"></script>
 </body>
 
 </html>
