@@ -66,6 +66,8 @@ $latestJobs = $data["latest_jobs"] ?? [];
 
 $pdfProducts = $data["pdf_products"] ?? [];
 
+$pdfCategories = $data['pdf_categories'] ?? [];
+
 $latestResults = $data["latest_results"] ?? [];
 
 $latestAdmitCards = $data["latest_admit_cards"] ?? [];
@@ -560,7 +562,7 @@ LATEST JOBS
 CURRENT AFFAIRS
 ========================== -->
 
-    <section class="py-5">
+    <section class="py-5 bg-light">
 
         <div class="container">
 
@@ -569,21 +571,16 @@ CURRENT AFFAIRS
                 <div>
 
                     <h2 class="fw-bold">
-
                         Current Affairs
-
                     </h2>
 
                     <p class="text-muted">
-
-                        Daily Current Affairs for Competitive Exams
-
+                        Latest Current Affairs PDFs for Competitive Exams
                     </p>
 
                 </div>
 
-                <a href="<?= BASE_URL ?>current-affairs/<?= htmlspecialchars($news['slug']) ?>"
-                    class="btn btn-outline-primary">
+                <a href="<?= BASE_URL ?>pdf-category/current-affairs" class="btn btn-outline-primary">
 
                     View All
 
@@ -602,21 +599,19 @@ CURRENT AFFAIRS
                     <div class="card border-0 shadow-sm h-100">
 
                         <img width="390" height="260" loading="lazy"
-                            src="<?= BASE_URL ?>admin_hub/uploads/posts/<?= htmlspecialchars($news['featured_image']) ?>"
+                            src="<?= BASE_URL ?>admin_hub/uploads/pdf-images/<?= htmlspecialchars($news['featured_image']) ?>"
                             class="card-img-top" alt="<?= htmlspecialchars($news['title']) ?>"
                             style="height:220px;object-fit:cover;">
 
                         <div class="card-body d-flex flex-column">
 
                             <span class="badge bg-primary mb-2">
-
-                                Current Affairs
-
+                                Current Affairs PDF
                             </span>
 
                             <h3 class="fw-bold fs-5">
 
-                                <a href="<?= BASE_URL ?>current-affairs/<?= htmlspecialchars($news['slug']) ?>"
+                                <a href="<?= BASE_URL ?>pdf/<?= htmlspecialchars($news['slug']) ?>"
                                     class="text-decoration-none text-dark">
 
                                     <?= htmlspecialchars($news['title']) ?>
@@ -639,10 +634,10 @@ CURRENT AFFAIRS
 
                             <div class="mt-auto">
 
-                                <a href="<?= BASE_URL ?>current-affairs/<?= htmlspecialchars($news['slug']) ?>"
+                                <a href="<?= BASE_URL ?>pdf/<?= htmlspecialchars($news['slug']) ?>"
                                     class="btn btn-primary w-100">
 
-                                    Read More
+                                    View PDF
 
                                 </a>
 
@@ -661,9 +656,7 @@ CURRENT AFFAIRS
                 <div class="col-12">
 
                     <div class="alert alert-warning">
-
-                        No Current Affairs Available.
-
+                        No Current Affairs PDFs Available.
                     </div>
 
                 </div>
@@ -782,41 +775,71 @@ CURRENT AFFAIRS
 
 </section> -->
     <!-- premium pdf stor  -->
-    <section class="py-5">
+    <section class="py-5 bg-light">
 
         <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4 gy-3">
 
-            <div class="d-flex justify-content-between">
+                <div class="col-lg-6">
 
-                <div>
-
-                    <h2 class="fw-bold">
-
+                    <h2 class="fw-bold mb-1">
                         Premium Study Materials
-
                     </h2>
 
-                    <p class="text-muted">
-
+                    <p class="text-muted mb-0">
                         High Quality PDFs with Solutions
-
                     </p>
 
                 </div>
 
-                <a href="<?= BASE_URL ?>pdf/" class="btn btn-outline-primary">
-                    View Store
-                </a>
+                <div class="col-lg-3">
+
+                    <div class="row g-2 justify-content-lg-end">
+
+                        <div class="col-sm-7 col-md-8">
+
+                            <select id="pdfCategoryFilter" class="form-select">
+
+                                <option value="all">
+                                    📚 All Categories
+                                </option>
+
+                                <?php foreach ($pdfCategories as $cat): ?>
+
+                                <option value="<?= $cat['id'] ?>">
+                                    <?= htmlspecialchars($cat['name']) ?>
+                                </option>
+
+                                <?php endforeach; ?>
+
+                            </select>
+
+                        </div>
+
+                        <div class=" col-lg-3">
+
+                            <a href="<?= BASE_URL ?>pdf/" class="btn btn-primary w-100">
+
+                                <i class="bi bi-shop me-1"></i>
+                                View Store
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
-            <div class="row mt-4 g-4">
+            <div class="row mt-4 g-4" id="pdfProductsContainer">
 
                 <?php if (!empty($pdfProducts)): ?>
 
                 <?php foreach ($pdfProducts as $pdf): ?>
 
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-6 pdf-item" data-category="<?= (int)$pdf['pdf_category_id'] ?>">
 
                     <div class="card border-0 shadow-sm h-100">
 
@@ -826,6 +849,14 @@ CURRENT AFFAIRS
                             style="height:260px;object-fit:cover;">
 
                         <div class="card-body d-flex flex-column">
+
+                            <?php if (!empty($pdf['category_name'])): ?>
+
+                            <span class="badge bg-primary mb-2">
+                                <?= htmlspecialchars($pdf['category_name']) ?>
+                            </span>
+
+                            <?php endif; ?>
 
                             <h3 class="fw-bold fs-5">
 
@@ -840,7 +871,7 @@ CURRENT AFFAIRS
 
                             <div class="small text-muted mb-3">
 
-                                <?= (int) $pdf['pages'] ?> Pages
+                                <?= (int)$pdf['pages'] ?> Pages
 
                                 <?php if (!empty($pdf['file_size'])): ?>
 
@@ -852,7 +883,7 @@ CURRENT AFFAIRS
 
                             <h4 class="text-primary mb-3">
 
-                                <?php if ((float) $pdf['price'] <= 0): ?>
+                                <?php if ((float)$pdf['price'] <= 0): ?>
 
                                 Free
 
@@ -898,7 +929,6 @@ CURRENT AFFAIRS
                 <?php endif; ?>
 
             </div>
-
         </div>
 
     </section>

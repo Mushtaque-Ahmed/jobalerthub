@@ -44,7 +44,7 @@ try {
 
     if ($category > 0) {
 
-        $where[] = "p.category_id=?";
+        $where[] = "p.pdf_category_id=?";
 
         $params[] = $category;
 
@@ -103,9 +103,9 @@ try {
 
     FROM pdf_products p
 
-    LEFT JOIN categories c
+    LEFT JOIN pdf_categories c
 
-        ON c.id = p.category_id
+        ON c.id = p.pdf_category_id
 
     WHERE {$whereSql}
 
@@ -137,7 +137,7 @@ try {
             name,
             slug
 
-        FROM categories
+        FROM pdf_categories
 
         WHERE status = 1
 

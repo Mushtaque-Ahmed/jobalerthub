@@ -73,27 +73,6 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
     </url>
 
 
-    <url>
-
-        <loc><?= $base ?>answer-key</loc>
-
-        <changefreq>weekly</changefreq>
-
-        <priority>0.7</priority>
-
-    </url>
-
-
-    <url>
-
-        <loc><?= $base ?>current-affair</loc>
-
-        <changefreq>daily</changefreq>
-
-        <priority>0.7</priority>
-
-    </url>
-
 
     <url>
 

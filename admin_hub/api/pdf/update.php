@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
 $id = (int)($_POST["id"] ?? 0);
 
-$category_id = (int)($_POST["category_id"] ?? 0);
+$pdf_category_id = (int)($_POST["pdf_category_id"] ?? 0);
 
 $title = trim($_POST["title"] ?? "");
 
@@ -235,7 +235,7 @@ $stmt=$pdo->prepare("
 
 UPDATE pdf_products SET
 
-category_id=?,
+pdf_category_id=?,
 
 title=?,
 
@@ -279,7 +279,7 @@ WHERE id=?
 
 $stmt->execute([
 
-    $category_id,
+    $pdf_category_id,
 
     $title,
 

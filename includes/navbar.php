@@ -110,7 +110,7 @@ NAVBAR
                         <li class="nav-item">
                             <a class="nav-link <?= ($activePage=="admit-card") ? "active fw-bold text-primary" : "" ?>"
                                 href="<?= BASE_URL ?>admit-card">
-                                Admit Card
+                                Admit Cards
                             </a>
                         </li>
 

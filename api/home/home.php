@@ -137,22 +137,45 @@ LIMIT 8
 $stmt->execute();
 
 $data["latest_admit_cards"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+/*
+=====================================
+PDF CATEGORIES
+=====================================
+*/
+
+$stmt = $pdo->query("
+    SELECT
+        id,
+        name,
+        slug
+    FROM pdf_categories
+    WHERE status = 1
+    ORDER BY name ASC
+");
+
+$data["pdf_categories"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
 /* ===============================
-        current affairs
+        current affairs pdf 
  ================================*/
- $stmt = $pdo->prepare("
+$stmt = $pdo->prepare("
 SELECT
-    id,
-    title,
-    slug,
-    short_description,
-    featured_image,
-    created_at
-FROM posts
+    p.id,
+    p.title,
+    p.slug,
+    p.short_description,
+    p.featured_image,
+    p.price,
+    p.pages,
+    p.downloads,
+    p.is_free,
+    p.created_at
+FROM pdf_products p
+INNER JOIN pdf_categories c
+    ON c.id = p.pdf_category_id
 WHERE
-    status='published'
-    AND post_type='current-affairs'
-ORDER BY id DESC
+    p.status = 1
+    AND c.slug = 'current-affairs'
+ORDER BY p.id DESC
 LIMIT 3
 ");
 
@@ -166,23 +189,28 @@ $data["current_affairs"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
     =====================================
     */
 
-    $stmt = $pdo->query("
-        SELECT
-            id,
-            title,
-            slug,
-            featured_image,
-            price,
-            pages,
-            downloads,
-            is_free
-        FROM pdf_products
-        WHERE status=1
-        ORDER BY id DESC
-        LIMIT 8
-    ");
+   $stmt = $pdo->query("
+SELECT
+    p.id,
+    p.title,
+    p.slug,
+    p.featured_image,
+    p.price,
+    p.pages,
+    p.file_size,
+    p.downloads,
+    p.is_free,
+    p.pdf_category_id,
+    c.name AS category_name
+FROM pdf_products p
+LEFT JOIN pdf_categories c
+    ON c.id = p.pdf_category_id
+WHERE p.status = 1
+ORDER BY p.id DESC
+LIMIT 8
+");
 
-    $data["pdf_products"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$data["pdf_products"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
     /* =====================================
     breaking newas
     =====================================*/

@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 /*=================================
 GET DATA
 =================================*/
-$category_id            = (int) ($_POST["category_id"] ?? 0);
+$pdf_category_id            = (int) ($_POST["pdf_category_id"] ?? 0);
 $title                  = trim($_POST["title"] ?? "");
 $slug                   = trim($_POST["slug"] ?? "");
 $short_description     = trim($_POST["short_description"] ?? "");
@@ -49,7 +49,7 @@ $status                 = $_POST["status"] ?? "draft";
 /*=================================
 VALIDATION
 =================================*/
-if ($category_id <= 0) {
+if ($pdf_category_id <= 0) {
     exit(json_encode(["success" => false, "message" => "Please select a category."]));
 }
 
@@ -160,7 +160,7 @@ $fileSize = round($pdf["size"] / 1024 / 1024, 2) . " MB";
 INSERT TO DATABASE
 =================================*/
 $sql = "INSERT INTO pdf_products (
-    category_id, title, slug, short_description, description,
+    pdf_category_id, title, slug, short_description, description,
     featured_image, pdf_file, file_size, pages, language,
     author, price, is_free, external_download_link, seo_title,
     seo_description, seo_keywords, status
@@ -169,7 +169,7 @@ $sql = "INSERT INTO pdf_products (
 try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
-        $category_id,
+        $pdf_category_id,
         $title,
         $slug,
         $short_description,

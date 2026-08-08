@@ -48,11 +48,7 @@ if ($id <= 0) {
 
     <form id="pdfForm" enctype="multipart/form-data">
 
-        <input
-            type="hidden"
-            id="pdf_id"
-            name="id"
-            value="<?= $id ?>">
+        <input type="hidden" id="pdf_id" name="id" value="<?= $id ?>">
 
         <div class="row">
 
@@ -71,10 +67,7 @@ if ($id <= 0) {
 
                             <label>Category</label>
 
-                            <select
-                                class="form-select"
-                                id="category_id"
-                                name="category_id">
+                            <select class="form-select" id="pdf_category_id" name="pdf_category_id">
 
                                 <option value="">
                                     Select Category
@@ -84,7 +77,7 @@ if ($id <= 0) {
 
                                 $stmt = $pdo->query("
                                     SELECT id,name
-                                    FROM categories
+                                    FROM pdf_categories
                                     WHERE status=1
                                     ORDER BY name
                                 ");
@@ -93,9 +86,9 @@ if ($id <= 0) {
 
                                 ?>
 
-                                    <option value="<?= $row['id'] ?>">
-                                        <?= htmlspecialchars($row['name']) ?>
-                                    </option>
+                                <option value="<?= $row['id'] ?>">
+                                    <?= htmlspecialchars($row['name']) ?>
+                                </option>
 
                                 <?php } ?>
 
@@ -107,11 +100,7 @@ if ($id <= 0) {
 
                             <label>Title</label>
 
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="title"
-                                name="title">
+                            <input type="text" class="form-control" id="title" name="title">
 
                         </div>
 
@@ -119,11 +108,7 @@ if ($id <= 0) {
 
                             <label>Slug</label>
 
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="slug"
-                                name="slug">
+                            <input type="text" class="form-control" id="slug" name="slug">
 
                         </div>
 
@@ -131,10 +116,7 @@ if ($id <= 0) {
 
                             <label>Short Description</label>
 
-                            <textarea
-                                class="form-control"
-                                rows="3"
-                                id="short_description"
+                            <textarea class="form-control" rows="3" id="short_description"
                                 name="short_description"></textarea>
 
                         </div>
@@ -143,9 +125,7 @@ if ($id <= 0) {
 
                             <label>Description</label>
 
-                            <textarea
-                                id="description"
-                                name="description"></textarea>
+                            <textarea id="description" name="description"></textarea>
 
                         </div>
 
@@ -167,10 +147,7 @@ if ($id <= 0) {
 
                                 <label>Author</label>
 
-                                <input
-                                    class="form-control"
-                                    id="author"
-                                    name="author">
+                                <input class="form-control" id="author" name="author">
 
                             </div>
 
@@ -178,10 +155,7 @@ if ($id <= 0) {
 
                                 <label>Language</label>
 
-                                <input
-                                    class="form-control"
-                                    id="language"
-                                    name="language">
+                                <input class="form-control" id="language" name="language">
 
                             </div>
 
@@ -189,11 +163,7 @@ if ($id <= 0) {
 
                                 <label>Pages</label>
 
-                                <input
-                                    type="number"
-                                    class="form-control"
-                                    id="pages"
-                                    name="pages">
+                                <input type="number" class="form-control" id="pages" name="pages">
 
                             </div>
 
@@ -201,11 +171,7 @@ if ($id <= 0) {
 
                                 <label>Price (₹)</label>
 
-                                <input
-                                    type="number"
-                                    class="form-control"
-                                    id="price"
-                                    name="price">
+                                <input type="number" class="form-control" id="price" name="price">
 
                             </div>
 
@@ -213,10 +179,7 @@ if ($id <= 0) {
 
                                 <label>Free PDF</label>
 
-                                <select
-                                    class="form-select"
-                                    id="is_free"
-                                    name="is_free">
+                                <select class="form-select" id="is_free" name="is_free">
 
                                     <option value="1">
                                         Yes
@@ -236,10 +199,7 @@ if ($id <= 0) {
                                     External Download Link
                                 </label>
 
-                                <input
-                                    type="url"
-                                    class="form-control"
-                                    id="external_download_link"
+                                <input type="url" class="form-control" id="external_download_link"
                                     name="external_download_link">
 
                             </div>
@@ -263,15 +223,9 @@ if ($id <= 0) {
 
                     <div class="card-body text-center">
 
-                        <img
-                            id="preview"
-                            class="img-fluid rounded border mb-3">
+                        <img id="preview" class="img-fluid rounded border mb-3">
 
-                        <input
-                            type="file"
-                            class="form-control"
-                            id="featured_image"
-                            name="featured_image"
+                        <input type="file" class="form-control" id="featured_image" name="featured_image"
                             accept=".webp">
 
                         <small class="text-danger">
@@ -292,16 +246,9 @@ if ($id <= 0) {
 
                     <div class="card-body">
 
-                        <div
-                            id="currentPdf"
-                            class="mb-2 small text-success"></div>
+                        <div id="currentPdf" class="mb-2 small text-success"></div>
 
-                        <input
-                            type="file"
-                            class="form-control"
-                            id="pdf_file"
-                            name="pdf_file"
-                            accept=".pdf">
+                        <input type="file" class="form-control" id="pdf_file" name="pdf_file" accept=".pdf">
 
                         <small class="text-danger">
 
@@ -321,22 +268,12 @@ if ($id <= 0) {
 
                     <div class="card-body">
 
-                        <input
-                            class="form-control mb-3"
-                            id="seo_title"
-                            name="seo_title"
-                            placeholder="SEO Title">
+                        <input class="form-control mb-3" id="seo_title" name="seo_title" placeholder="SEO Title">
 
-                        <textarea
-                            class="form-control mb-3"
-                            id="seo_description"
-                            name="seo_description"
+                        <textarea class="form-control mb-3" id="seo_description" name="seo_description"
                             placeholder="SEO Description"></textarea>
 
-                        <textarea
-                            class="form-control"
-                            id="seo_keywords"
-                            name="seo_keywords"
+                        <textarea class="form-control" id="seo_keywords" name="seo_keywords"
                             placeholder="SEO Keywords"></textarea>
 
                     </div>
@@ -351,10 +288,7 @@ if ($id <= 0) {
 
                     <div class="card-body">
 
-                        <select
-                            class="form-select mb-3"
-                            id="status"
-                            name="status">
+                        <select class="form-select mb-3" id="status" name="status">
 
                             <option value="0">
                                 Draft
@@ -366,10 +300,7 @@ if ($id <= 0) {
 
                         </select>
 
-                        <button
-                            type="submit"
-                            class="btn btn-primary w-100"
-                            id="updateBtn">
+                        <button type="submit" class="btn btn-primary w-100" id="updateBtn">
 
                             Update PDF
 
@@ -388,9 +319,7 @@ if ($id <= 0) {
 </div>
 
 <script>
-
 const PDF_ID = <?= $id ?>;
-
 </script>
 
 <script src="<?= BASE_URL ?>assets/js/pdf-edit.js"></script>

@@ -28,9 +28,7 @@ require_once __DIR__ . "/../includes/database.php";
             PDF Products
         </h3>
 
-        <a
-            href="<?= BASE_URL ?>pdf/create.php"
-            class="btn btn-primary">
+        <a href="<?= BASE_URL ?>pdf/create.php" class="btn btn-primary">
 
             <i class="bi bi-plus-circle"></i>
 
@@ -50,19 +48,13 @@ require_once __DIR__ . "/../includes/database.php";
 
                 <div class="col-md-4">
 
-                    <input
-                        type="text"
-                        id="search"
-                        class="form-control"
-                        placeholder="Search PDF...">
+                    <input type="text" id="search" class="form-control" placeholder="Search PDF...">
 
                 </div>
 
                 <div class="col-md-3">
 
-                    <select
-                        id="categoryFilter"
-                        class="form-select">
+                    <select id="categoryFilter" class="form-select">
 
                         <option value="">
                             All Categories
@@ -72,7 +64,7 @@ require_once __DIR__ . "/../includes/database.php";
 
                         $stmt = $pdo->query("
                             SELECT id,name
-                            FROM categories
+                            FROM pdf_categories
                             WHERE status=1
                             ORDER BY name
                         ");
@@ -95,9 +87,7 @@ require_once __DIR__ . "/../includes/database.php";
 
                 <div class="col-md-3">
 
-                    <select
-                        id="statusFilter"
-                        class="form-select">
+                    <select id="statusFilter" class="form-select">
 
                         <option value="">
                             All Status
@@ -171,9 +161,7 @@ require_once __DIR__ . "/../includes/database.php";
 
             </div>
 
-            <div
-                id="pagination"
-                class="mt-3 d-flex justify-content-end">
+            <div id="pagination" class="mt-3 d-flex justify-content-end">
 
             </div>
 

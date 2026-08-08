@@ -48,10 +48,7 @@ require_once __DIR__ . "/../includes/database.php";
 
                             <label>Category</label>
 
-                            <select
-                                class="form-select"
-                                name="category_id"
-                                id="category_id">
+                            <select class="form-select" name="pdf_category_id" id="pdf_category_id">
 
                                 <option value="">
                                     Select Category
@@ -61,7 +58,7 @@ require_once __DIR__ . "/../includes/database.php";
 
                                 $stmt = $pdo->query("
                                 SELECT id,name
-                                FROM categories
+                                FROM pdf_categories
                                 WHERE status=1
                                 ORDER BY name
                                 ");
@@ -86,11 +83,7 @@ require_once __DIR__ . "/../includes/database.php";
 
                             <label>Title</label>
 
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="title"
-                                name="title">
+                            <input type="text" class="form-control" id="title" name="title">
 
                         </div>
 
@@ -98,11 +91,7 @@ require_once __DIR__ . "/../includes/database.php";
 
                             <label>Slug</label>
 
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="slug"
-                                name="slug">
+                            <input type="text" class="form-control" id="slug" name="slug">
 
                         </div>
 
@@ -110,10 +99,7 @@ require_once __DIR__ . "/../includes/database.php";
 
                             <label>Short Description</label>
 
-                            <textarea
-                                class="form-control"
-                                rows="3"
-                                name="short_description"
+                            <textarea class="form-control" rows="3" name="short_description"
                                 id="short_description"></textarea>
 
                         </div>
@@ -122,9 +108,7 @@ require_once __DIR__ . "/../includes/database.php";
 
                             <label>Description</label>
 
-                            <textarea
-                                id="description"
-                                name="description"></textarea>
+                            <textarea id="description" name="description"></textarea>
 
                         </div>
 
@@ -146,9 +130,7 @@ require_once __DIR__ . "/../includes/database.php";
 
                                 <label>Author</label>
 
-                                <input
-                                    class="form-control"
-                                    name="author">
+                                <input class="form-control" name="author">
 
                             </div>
 
@@ -156,9 +138,7 @@ require_once __DIR__ . "/../includes/database.php";
 
                                 <label>Language</label>
 
-                                <input
-                                    class="form-control"
-                                    name="language">
+                                <input class="form-control" name="language">
 
                             </div>
 
@@ -166,10 +146,7 @@ require_once __DIR__ . "/../includes/database.php";
 
                                 <label>Pages</label>
 
-                                <input
-                                    type="number"
-                                    class="form-control"
-                                    name="pages">
+                                <input type="number" class="form-control" name="pages">
 
                             </div>
 
@@ -177,11 +154,7 @@ require_once __DIR__ . "/../includes/database.php";
 
                                 <label>Price (₹)</label>
 
-                                <input
-                                    type="number"
-                                    class="form-control"
-                                    value="0"
-                                    name="price">
+                                <input type="number" class="form-control" value="0" name="price">
 
                             </div>
 
@@ -189,9 +162,7 @@ require_once __DIR__ . "/../includes/database.php";
 
                                 <label>Free PDF</label>
 
-                                <select
-                                    class="form-select"
-                                    name="is_free">
+                                <select class="form-select" name="is_free">
 
                                     <option value="1">
                                         Yes
@@ -211,10 +182,7 @@ require_once __DIR__ . "/../includes/database.php";
                                     External Download Link
                                 </label>
 
-                                <input
-                                    type="url"
-                                    class="form-control"
-                                    name="external_download_link">
+                                <input type="url" class="form-control" name="external_download_link">
 
                             </div>
 
@@ -237,15 +205,9 @@ require_once __DIR__ . "/../includes/database.php";
 
                     <div class="card-body text-center">
 
-                        <img
-                            id="preview"
-                            class="img-fluid border rounded mb-3">
+                        <img id="preview" class="img-fluid border rounded mb-3">
 
-                        <input
-                            type="file"
-                            class="form-control"
-                            id="featured_image"
-                            name="featured_image"
+                        <input type="file" class="form-control" id="featured_image" name="featured_image"
                             accept=".webp">
 
                         <small class="text-danger">
@@ -264,12 +226,7 @@ require_once __DIR__ . "/../includes/database.php";
 
                     <div class="card-body">
 
-                        <input
-                            type="file"
-                            class="form-control"
-                            id="pdf_file"
-                            name="pdf_file"
-                            accept=".pdf">
+                        <input type="file" class="form-control" id="pdf_file" name="pdf_file" accept=".pdf">
 
                         <small class="text-danger">
                             PDF only (Max 50 MB)
@@ -287,20 +244,12 @@ require_once __DIR__ . "/../includes/database.php";
 
                     <div class="card-body">
 
-                        <input
-                            class="form-control mb-3"
-                            name="seo_title"
-                            placeholder="SEO Title">
+                        <input class="form-control mb-3" name="seo_title" placeholder="SEO Title">
 
-                        <textarea
-                            class="form-control mb-3"
-                            name="seo_description"
+                        <textarea class="form-control mb-3" name="seo_description"
                             placeholder="SEO Description"></textarea>
 
-                        <textarea
-                            class="form-control"
-                            name="seo_keywords"
-                            placeholder="SEO Keywords"></textarea>
+                        <textarea class="form-control" name="seo_keywords" placeholder="SEO Keywords"></textarea>
 
                     </div>
 
@@ -314,9 +263,7 @@ require_once __DIR__ . "/../includes/database.php";
 
                     <div class="card-body">
 
-                        <select
-                            class="form-select mb-3"
-                            name="status">
+                        <select class="form-select mb-3" name="status">
 
                             <option value="draft">
                                 Draft
@@ -328,9 +275,7 @@ require_once __DIR__ . "/../includes/database.php";
 
                         </select>
 
-                        <button
-                            class="btn btn-primary w-100"
-                            id="saveBtn">
+                        <button class="btn btn-primary w-100" id="saveBtn">
 
                             Save PDF
 
@@ -349,5 +294,5 @@ require_once __DIR__ . "/../includes/database.php";
 </div>
 
 
- <script src="<?= BASE_URL ?>assets/js/pdf.js"></script>
+<script src="<?= BASE_URL ?>assets/js/pdf.js"></script>
 <?php require_once __DIR__ . "/../includes/footer.php"; ?>

@@ -184,3 +184,40 @@ async function loadHome() {
 
     }
 }
+
+
+/*==========================
+filter categories 
+=========================*/
+document.addEventListener("DOMContentLoaded", function () {
+
+    const filter = document.getElementById("pdfCategoryFilter");
+
+    if (!filter) return;
+
+    filter.addEventListener("change", function () {
+
+        const selected = this.value;
+        const cards = document.querySelectorAll(".pdf-item");
+
+        cards.forEach(card => {
+
+            if (selected === "all") {
+
+                card.style.display = "";
+
+            } else if (card.dataset.category === selected) {
+
+                card.style.display = "";
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+    });
+
+});

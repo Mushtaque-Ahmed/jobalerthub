@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const p = result.data;
 
-            document.getElementById("category_id").value = p.category_id;
+            document.getElementById("pdf_category_id").value = p.pdf_category_id;
 
             title.value = p.title;
 
