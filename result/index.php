@@ -37,7 +37,7 @@ $posts = $response["posts"] ?? [];
 $categories = $response["categories"] ?? [];
 $pagination = $response["pagination"] ?? [];
 
-$page_title = "Latest Government Results | JobAdAssam";
+$page_title = "Latest  Results | JobAdAssam";
 
 $meta_description =
 "Check the latest Government Exam Results, Merit Lists and Recruitment Results.";

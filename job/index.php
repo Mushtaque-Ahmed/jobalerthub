@@ -38,7 +38,7 @@ $posts = $response["posts"] ?? [];
 $categories = $response["categories"] ?? [];
 $pagination = $response["pagination"] ?? [];
 
-$page_title = "Latest Government Jobs | JobAdAssam";
+$page_title = "Latest  Jobs | JobAdAssam";
 
 $meta_description =
 "Apply online for the latest Government Jobs in Assam and India. Find eligibility, salary, exam dates and official notifications.";

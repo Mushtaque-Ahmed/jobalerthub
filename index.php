@@ -99,7 +99,7 @@ HERO SECTION
 
                     <h1 class="display-4 fw-bold">
 
-                        Latest Government Jobs,
+                        Latest Jobs,
                         Results & Exam Updates
 
                     </h1>
@@ -422,7 +422,7 @@ LATEST JOBS
 
                 </h2>
 
-                <a href="#" class="btn btn-outline-success">
+                <a href="<?= BASE_URL ?>result" class="btn btn-outline-success">
 
                     View All
 

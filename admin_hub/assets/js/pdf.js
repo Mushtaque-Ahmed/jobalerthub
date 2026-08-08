@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clearMessage();
 
         // Category
-        if (document.getElementById("category_id").value == "") {
+        if (document.getElementById("pdf_category_id").value == "") {
 
             showMessage("danger", "Please select a category.");
 
